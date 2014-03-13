@@ -1,0 +1,28 @@
+events:
+  events_category:
+    default: 'events'
+    client: true
+  projects_category:
+    default: 'projects'
+    client: true
+  blog_category:
+    default: 'blog'
+    client: true
+  googlecalendar_url:
+    default: ''
+    client: true
+  googlecalendar_enabled:
+    default: false
+    client: true
+  googlecalendar_username:
+    default: ''
+    client: true
+  googlecalendar_password:
+    default: ''
+    client: true
+  googlecalendar_start:
+    default: 12
+    client: true
+  googlecalendar_end:
+    default: 18
+    client: true

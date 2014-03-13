@@ -661,3 +661,111 @@ button.thoughtbot {
   margin-right: 5px; }
 
 
+.docked #main-outlet {
+  margin-top: 0;
+  padding-top: 123px; }
+
+.docked nav#bar {
+  display: none; }
+
+nav#bar {
+  width: 100%;
+  height: 48px;
+  background: #1b1f20;
+  position: absolute;
+  top: 0;
+  z-index: 1; }
+
+nav#bar div {
+  width: 840px;
+  margin: 0px auto; }
+
+nav#bar a.nav-link {
+  color: #FFF;
+  text-decoration: none;
+  text-align: center;
+  -webkit-text-stroke: 0.2px;
+  font-family: 'Montserrat', sans-serif; }
+
+nav#bar a.nav-link {
+  line-height: 48px;
+  min-width: 120px;
+  text-align: center;
+  font-size: 16px;
+  float: left; }
+
+nav#bar a.red.selected {
+  color: #d13332;
+  border-color: #d13332 !important; }
+
+nav#bar a.red:hover {
+  color: #d13332;
+  text-shadow: 0px 0px 5px #d13332; }
+
+nav#bar a.orange.selected {
+  color: #ea5932;
+  border-color: #ea5932 !important; }
+
+nav#bar a.orange:hover {
+  color: #ea5932;
+  text-shadow: 0px 0px 5px #ea5932; }
+
+nav#bar a.yellow.selected {
+  color: #fff9ae;
+  border-color: #fff9ae !important; }
+
+nav#bar a.yellow:hover {
+  color: #fff9ae;
+  text-shadow: 0px 0px 5px #fff9ae; }
+
+nav#bar a.green.selected {
+  color: #18b159;
+  border-color: #18b159 !important; }
+
+nav#bar a.green:hover {
+  color: #18b159;
+  text-shadow: 0px 0px 5px #18b159; }
+
+nav#bar a.blue.selected {
+  color: #00aeef;
+  border-color: #00aeef !important; }
+
+nav#bar a.blue:hover {
+  color: #00aeef;
+  text-shadow: 0px 0px 5px #00aeef; }
+
+nav#bar a.grey.selected {
+  color: #aaa;
+  border-color: #aaa !important; }
+
+nav#bar a.grey:hover {
+  color: #aaa;
+  text-shadow: 0px 0px 5px #aaa; }
+
+nav#bar a.nav-link.selected {
+  line-height: 42px;
+  border-top: 3px solid #0b0d0d;
+  background-color: #0b0d0d;
+  height: 45px; }
+
+nav#bar a.fork-us {
+  float: right;
+  border-radius: 4px;
+  background-color: #2b3234;
+  width: 104px;
+  height: 32px;
+  line-height: 32px;
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  color: #FFF;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif; }
+
+nav#bar a.fork-us:hover {
+  background-color: #434748; }
+
+nav#bar a.fork-us:active {
+  background-color: #000; }
+

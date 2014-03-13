@@ -1,0 +1,21 @@
+en:
+  site_settings:
+    googlecalendar_url: "Google Calendar Feed URL"
+    googlecalendar_username: "Google Calendar Username"
+    googlecalendar_password: "Google Calendar Password"
+    googlecalendar_enabled: "Enable Google Calendar syncing"
+    events_category: "Category to read from for events listing"
+  events:
+    prefix: 
+      topic: "Event:"
+      date: "Date:"
+      time: "Time:"
+      city: "City:"
+      place: "Place:"
+  projects:
+    prefix: 
+      topic: "Project:"
+      trello: "Trello:"
+  blog:
+    prefix:
+      topic: "Blog:"

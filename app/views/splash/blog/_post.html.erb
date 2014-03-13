@@ -1,0 +1,19 @@
+<div class="comment" id="comment-<%=post.post_number%>">
+  <div class="commentTitle">
+    <%= user_link(post.user) %>
+    <span class="date"><%= age post.created_at -%></span>
+  </div>
+  <div class="commentRest">
+    <div class="commentGravatar">
+      <img alt="<%=post.user.name%>" class="gravatar" height="64" src="<%= post.user.avatar_template.gsub("{size}", "60") %>" width="64">
+    </div>
+    <div class="commentBody">
+      <%= post.cooked.html_safe %>
+    </div>
+    <div class="clear">
+    </div>
+  </div>
+  <div class="clear">
+  </div>
+</div>
+

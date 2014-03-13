@@ -1,0 +1,12 @@
+en:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          events: 'Events'
+  js:
+    event:
+      title: 'Event'
+      date: 'Date'
+    past_events: 'Past events'
+    upcoming_events: 'Upcoming events'

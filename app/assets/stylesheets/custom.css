@@ -1,0 +1,118 @@
+/*
+Enter Here your Custom CSS Style!!
+*/
+
+header #logo a {
+	background-size: 116px 30px;
+}
+
+header #logo a {
+	width: 116px;
+}
+
+.type-work {
+background-image: none;
+}
+
+.item-thumbs a + img {
+	margin-left: -21px;
+	margin-right: -21px;
+	margin-top: -21px;
+	margin-bottom: 10px;
+	width: initial;
+}
+
+#projects .item-thumbs a + img {
+	max-width: 311px;
+}
+
+
+.item-thumbs {
+	font-size: 16px;
+	line-height: 25px;
+	color: #545454;
+	background-color: #fff;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	padding: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.27);
+	clear: both;
+}
+
+.item-thumbs h4 {
+	color: #333;
+	margin-bottom: 10px;
+}
+
+.item-thumbs p {
+	margin: 0;
+}
+
+.item-thumbs .hover-wrap .overlay-img {
+	left: -21px;
+	top: -21px;
+	width: 280px;
+	height: 101%;
+}
+
+.item-thumbs .hover-wrap .overlay-img-thumb {
+	margin: -37px 0 0 -37px;
+}
+
+#eventslist .item-thumbs {
+	color: #7F8289;
+	background-color: #2F3238;
+	border: 1px solid rgba(0, 0, 0, 0.27);
+}
+
+.event-details {
+	margin-bottom: 5px;
+	margin-top: -15px;
+	color: #666666;
+}
+
+.event-date {
+	position: absolute;
+	text-shadow: 1px 1px 3px #000000;
+	left: 84px;
+	top: 86px;
+	font-size: 68px;
+	font-weight: 500;
+	color: #FFF;
+}
+
+#eventslist .item-thumbs a + img {
+	margin-right: 10px;
+	margin-bottom: -21px;
+	width: 280px;
+	float: left;
+}
+
+#eventslist .item-thumbs p {
+	max-height: 166px;
+}
+
+#eventslist .item-thumbs h4 {
+	margin-top: -10px;
+	color: #FFF;
+}
+
+.filter-past {
+	border-left: solid 1px #7C7C7C;
+	padding-left: 30px !important;
+}
+
+.slide-content p {
+	font-size: 18px;
+	letter-spacing: 0px;
+	text-transform: none;
+	line-height: 18px;
+	width: 40%;
+	margin: auto;
+}
+
+.image-wrap {
+	width: 270px;
+	height: 240px;
+}
