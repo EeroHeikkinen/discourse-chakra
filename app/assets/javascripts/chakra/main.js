@@ -115,7 +115,7 @@ CHAKRA.filter = function (container){
 			  animationEngine: 'best-available',
 			  itemSelector : '.item-thumbs',
 			  layoutMode : 'fitRows',
-			  filter: '.future'
+			  filter: 'not(.past)'
 			});
 		});
 	
