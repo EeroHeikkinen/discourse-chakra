@@ -18,7 +18,7 @@ module ::Chakra
 end
 
 Rails.configuration.assets.precompile += 
-['chakra.js', 
+['chakra.js', 'chakra.css',
   'bootstrap-responsive.min.css', 
   'bootstrap.min.css', 
   'custom.css', 'fonts.css', 
