@@ -3,10 +3,6 @@
 # version: 0.1
 # authors: Eero Heikkinen
 
-gem "multi_xml","0.5.5"
-gem "httparty", "0.12.0"
-gem "rubyoverflow", "1.0.2"
-
 #::BLOG_HOST = Rails.env.development? ? "dev.samsaffron.com" : "samsaffron.com"
 #::BLOG_DISCOURSE = Rails.env.development? ? "l.discourse" : "discuss.samsaffron.com"
 
@@ -18,14 +14,7 @@ module ::Chakra
 end
 
 Rails.configuration.assets.precompile += 
-['chakra.js', 'chakra.css',
-  'bootstrap-responsive.min.css', 
-  'bootstrap.min.css', 
-  'custom.css', 'fonts.css', 
-  'main.css', 'responsive.css', 
-  'shortcodes.css', 'supersized.css', 
-  'supersized.shutter.css', 
-  'jquery.fancybox.css']
+['chakra.js', 'chakra.css']
 
 after_initialize do
 
