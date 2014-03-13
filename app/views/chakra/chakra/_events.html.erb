@@ -15,9 +15,9 @@
               <!-- Filter -->
                 <nav id="eventslist-options" class="work-nav">
                     <ul id="filters" class="option-set" data-option-key="filter">
-                        <li><a href="#filter" data-option-value="*" class="selected">Kaikki kaupungit</a></li>
+                        <li><a href="#filter" data-option-value=".future" class="selected">Kaikki kaupungit</a></li>
                         <% @cities.each do |c| %>
-                        <li><a href="#filter" data-option-value=".<%= c.downcase %>"><%= c %></a></li>
+                        <li><a href="#filter" data-option-value=".future.<%= c.downcase %>"><%= c %></a></li>
                         <% end %>
                         <li class="filter-past"><a href="#filter" data-option-value=".past">Näytä menneet</a></li>
                     </ul>

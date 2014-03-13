@@ -7,7 +7,7 @@ module Chakra
       @display_slider = true
 
       @events = OnepagePlugin::events
-      @cities = @events.group_by{|e| e.city}.keys.compact
+      @cities = @events.group_by{|e| e.past ? nil : e.city}.keys.compact
       render "onepage"
     end
 
