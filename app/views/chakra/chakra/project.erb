@@ -1,0 +1,80 @@
+
+<!-- About Section -->
+<div id="work" class="page-alternate">
+<div class="container">
+    <!-- Title Page -->
+    <div class="row">
+        <div class="span12">
+            <div class="title-page">
+                <h2 class="title"><%= @project.title %></h2>
+                <h3 class="title-description"><%= @project.summary %></h3>
+                
+                <div class="page-description">
+                    <p><%= @project.post.cooked.html_safe %></p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- End Title Page -->
+    <!--
+    <div class="row margin-40">
+      <div class="span4">
+          <h3>Mitä?</h3>
+      <p> Tarjoamme innostavat ja kotoisat puitteet, joiden sisällä voi yhdessä tekemisen, oppimisen ja kokeilun kautta luoda yhteyttä itseen, toisiin ja toisista huolehtimiseen. Autamme tuottamaan yksilön ja yhteisöjen kannalta merkityksellistä sisältöä ihmisten jokapäiväistä elämää rikastuttamaan. Kannustamme ihmisiä ottamaan käytännön askelia, jotka johdattavat meitä kohti kestävää, hyvinvoivaa ja inhimillistä maailmaa. </p>
+        </div>
+        
+        <div class="span4">
+          <h3>Miksi?</h3>
+            <p>Koemme, että maailmassa tarvitaan enemmän tasa-arvoista yhdessä tekemistä, joka ei perustu taloudelliselle hyödylle. Nykykulttuurissa painotetaan helposti yksilöiden välistä kilpailua. Materiaalisia palkintoja pidetään usein tärkeämpinä kuin ihmisenä kasvamista. Kaikille se ei tarjoa kokemusta elämän mielekkyydestä tai siitä, että omalla panoksella olisi merkitystä. Haluamme olla mukana rakentamassa vastavuoroisuuteen, välittämiseen ja henkiseen hyvinvointiin perustuvaa kulttuuria.
+</p>
+        </div>
+        
+        <div class="span4">
+          <h3>Kuinka?</h3>
+            <p>Alustan [tän tilalle yhteisön nimi] on tarkoitus toimia avoimena, ketteränä ja kevyenä lähtökohtana yhteiskunnalliseen osallistumiseen, ympäristöön vaikuttamiseen sekä elävän elämän yhteyksien muodostamiseen. Kauttamme tavoittaa ihmisten verkoston, jolla on näkemystä ja tahtoa parantaa ja suojella elämää ympärillämme. Osallistumisesta on tehty mahdollisimman helppoa. </p>
+
+<p>Alustalla kuka tahansa voi toteuttaa toiminta-ajatukseemme soveltuvia ideoita. Siellä voit esimerkiksi esitellä itsesi, tutustua muihin käyttäjiin, kutsua ihmisiä osallistumaan projektiisi sekä keskustella sinulle tärkeistä asioista. Toimintamme ei perustu millekään tietylle ideologialle emmekä tavoittele taloudellista voittoa. </p>
+        </div>
+        
+    </div>
+    -->
+    
+    <div class="sep">
+      <span class="separator"></span>
+    </div>
+    
+    <!-- People -->
+    <div class="row">
+
+    <% @project.participants.each do |id, p| %>
+      
+        <!-- Start Profile -->
+      <div class="span4 profile">
+          <div class="image-wrap">
+                <div class="hover-wrap">
+                    <span class="overlay-img"></span>
+                    <span class="overlay-text-thumb">CTO/Founder</span>
+                </div>
+                <img src="<%= p.avatar_template.gsub("{size}", "120") %>" alt="<%= p.name %>">
+            </div>
+            <h3 class="profile-name"><%= p.name %></h3>
+            <p class="profile-description"><%= p.bio_cooked %></p>
+
+            <div class="social">
+              <ul class="social-icons">
+                  <li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
+                    <li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
+                    <li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- End Profile -->
+
+    <% end %>
+        
+    </div>
+    <!-- End People -->
+</div>
+</div>
+<!-- End About Section -->

@@ -1,0 +1,59 @@
+<div id="events" class="page-alternate">
+  <div class="container">
+      <!-- Title Page -->
+        <div class="row">
+            <div class="span12">
+                <div class="title-page">
+                    <h2 class="title">Tapahtumat</h2>
+                </div>    
+            </div>
+        </div>
+
+ <!-- Portfolio Projects -->
+        <div class="row">
+          <div class="span12">
+              <!-- Filter -->
+                <nav id="eventslist-options" class="work-nav">
+                    <ul id="filters" class="option-set" data-option-key="filter">
+                        <li><a href="#filter" data-option-value="*" class="selected">Kaikki kaupungit</a></li>
+                        <% @cities.each do |c| %>
+                        <li><a href="#filter" data-option-value=".<%= c.downcase %>"><%= c %></a></li>
+                        <% end %>
+                        <li class="filter-past"><a href="#filter" data-option-value=".past">Näytä menneet</a></li>
+                    </ul>
+                </nav>
+                <!-- End Filter -->
+            </div>
+            
+            <div class="span12">
+              <div class="row">
+                  <section id="eventslist">
+                      <ul id="thumbs">
+                        
+              <!-- Item Project and Filter Name -->
+                        <% @events.each do |e| %>
+                          <li class="item-thumbs span10 <%= e.city ? e.city.downcase : '' %> <%= e.past ? 'past' : 'future' %>">
+                                <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                <span class="event-date"><%= e.short_date %></span>
+                                <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<%= e.title %>" href="<%= e.url %>">
+                                    <span class="overlay-img"></span>
+                                    <span class="overlay-img-thumb font-icon-search"></span>
+                                </a>
+                                <!-- Thumb Image and Description -->
+                                <img src="<%= e.image_url%>" alt="<%= e.summary %>">
+                                <h4><%= e.title %></h4>
+                                <h6 class="event-details"><%= e.city ? e.city : 'Paikka X' %> <%= e.place ? '@ ' + e.place : '' %> <%= e.time ? 'klo ' + e.time : '' %></h6>
+                                <p><%= e.summary %></p>
+                            </li>
+                          <!-- End Item Project -->
+                        <% end %>
+                      </ul>
+
+                  </section>
+              </div>
+            </div>
+
+        </div>
+        <!-- End Portfolio Projects -->
+    </div>
+</div>

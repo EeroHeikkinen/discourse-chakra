@@ -309,7 +309,7 @@ h3.spec {
 	display: inline-block;
 	width: 24px;
 	height: 24px;
-	background: url(/assets/chakra/seperator.png) no-repeat;
+	background: url(/plugins/chakra/images/seperator.png) no-repeat;
 	vertical-align: text-top;
 }
 
@@ -527,11 +527,11 @@ header #logo {
 	color: #FFFFFF;
 	float: left;
 	padding: 15px 0;
-	margin-left: 20px;
+	margin-left: 20px; 
 }
 
 header #logo a {
-	background: url(/assets/chakra/logo.png) no-repeat;
+	background: url(/plugins/chakra/images/logo.png) no-repeat;
 	width: 96px;
 	height: 30px;
 	text-indent: -9999px;
@@ -594,7 +594,7 @@ nav#menu #menu-nav li a:hover {
 }
 
 .menu-nav {
-	background:url(/assets/chakra/menu-mobile.png) 0 0 no-repeat;
+	background:url(/plugins/chakra/images/menu-mobile.png) 0 0 no-repeat;
 	width: 16px;
 	height: 16px;
 	display: block;

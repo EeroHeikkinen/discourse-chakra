@@ -9,7 +9,7 @@
 <!-- Meta Tags -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<title>Chakra | Responsive One Page Template</title>   
+<title>Yhteinen</title>   
 
 <meta name="description" content="" /> 
 
@@ -32,7 +32,7 @@
 <%= stylesheet_link_tag 'supersized.shutter' %>
 
 <!-- FancyBox -->
-<%= stylesheet_link_tag 'fancybox/jquery.fancybox' %>
+<%= stylesheet_link_tag 'jquery.fancybox' %>
 
 <!-- Font Icons -->
 <%= stylesheet_link_tag 'fonts' %>
@@ -58,8 +58,8 @@
 <link rel="apple-touch-icon" sizes="72x72" href="#">
 <link rel="apple-touch-icon" sizes="144x144" href="#">
 
-<!-- Modernizr -->
-<%= javascript_include_tag "modernizr.custom.00874" %>
+
+<%= javascript_include_tag "chakra" %>
 
 <!-- Analytics -->
 <!--
@@ -185,99 +185,7 @@
 </a>
 <!-- End Back to Top -->
 
-
-<!-- Js -->
-
-<%= javascript_include_tag "jquery_include" %>
-<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script> <!-- Google Map API -->
-
-<%= javascript_include_tag "bootstrap.min" %>
-<%= javascript_include_tag "supersized.3.2.7.min" %>
-<%= javascript_include_tag "waypoints" %>
-<%= javascript_include_tag "waypoints-sticky" %>
-<%= javascript_include_tag "jquery.isotope" %>
-<%= javascript_include_tag "jquery.fancybox.pack" %>
-<%= javascript_include_tag "jquery.fancybox-media" %>
-<%= javascript_include_tag "jquery.tweet" %>
-<%= javascript_include_tag "plugins" %>
-<%= javascript_include_tag "main" %>
-
 <!-- End Js -->
 
 </body>
 </html>
-
-<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <meta name="author" content="Sam Saffron" />
-  <meta name="copyright" content="Sam Saffron" />
-  <meta content="Sam, Saffron, .NET, C#, Ruby, Rails, Weblog, SQL, Blog" name="keywords" />
-  <meta name="description" content="Sam's Spot - Sam saffron's web log" />
-  <%= csrf_meta_tag %>
-  <link rel="alternate" type="application/rss+xml" title="Sam Saffron's Blog (RSS 2.0)" href="http://samsaffron.com/posts.rss"  />
-  <title><%= yield :title  %></title>
-  <%= stylesheet_link_tag 'blog' %>
-  <script type='text/javascript'>window.q=[];window.$=function(f){q.push(f)}</script>
-</head>
-
-<body>
-  <script>
-    $(function() {
-      $('pre > code').each(function(i, e) {
-        hljs.highlightBlock(e, '    ')
-      })
-    })
-  </script>
-	<div id="wrapper">
-		<div id="header">
-			<div id="headerLogo">
-        <div class='htitle'>
-          <h3>Sam Saffron</h3>
-          <p class='tagline'>Programming, Technology and the Art of Hacking</p>
-        </div>
-        <ul>
-          <li>Ruby</li>
-          <li>MiniProfiler</li>
-          <li>SQL</li>
-          <li>Dapper</li>
-          <li>Media Browser</li>
-          <li>C#</li>
-        </ul>
-			</div>
-			<div class="clear"></div>
-			<%= render :partial => "layouts/navbar" %>
-		</div>
-		<div id="content">
-			
-    </div>
-    <% if controller.show_sidebar %>
-    <div id="sidebar">
-      <%= render :partial => "layouts/sidebar" %>
-    </div>
-    <% end %>
-    <div class="clear"/>
-		<div id="footer">
-			syndication: <%= link_to "rss", "/posts.rss" %> <%= link_to "atom", "/posts.atom" %>
-		</div>
-	</div>
-
-  <%= javascript_include_tag 'LAB' %>
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-50203-9']);
-    _gaq.push(['_trackPageview']);
-    _gaq.push(['_setSiteSpeedSampleRate', 20]);
-
-    $LAB
-    .script('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
-    .wait()
-    .script('http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js')
-    .wait(function(){$.each(q,function(i,f){$(f)})})
-    .script('http://www.google-analytics.com/ga.js');
-  </script>
-</body>-->
-

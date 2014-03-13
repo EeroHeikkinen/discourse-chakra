@@ -114,7 +114,7 @@
 	}
 	
 	.type-work {
-		background: url(/assets/chakra/filter-icon.png) no-repeat;
+		background: url(/plugins/chakra/images/filter-icon.png) no-repeat;
 		width: 16px;
 		height: 16px;
 		display: inline-block;
@@ -276,7 +276,7 @@
 	}
 	
 	.type-work {
-		background: url(/assets/chakra/filter-icon.png) no-repeat;
+		background: url(/plugins/chakra/images/filter-icon.png) no-repeat;
 		width: 16px;
 		height: 16px;
 		display: inline-block;
@@ -396,22 +396,22 @@
   	only screen and (min-resolution: 2dppx) {
 		
 		header #logo a {
-			background-image: url(/assets/chakra/logo_@2x.png);
+			background-image: url(/plugins/chakra/images/logo_@2x.png);
 			background-size: 96px 30px;
 		}
 		
 		.menu-nav {
-			background-image: url(/assets/chakra/menu-mobile_@2x.png);
+			background-image: url(/plugins/chakra/images/menu-mobile_@2x.png);
 			background-size: 16px 32px;
 		}
 		
 		.type-work {
-			background-image: url(/assets/chakra/filter-icon_@2x.png);
+			background-image: url(/plugins/chakra/images/filter-icon_@2x.png);
 			background-size: 16px 16px;
 		}
 		
 		.sep .separator {
-			background-image: url(/assets/chakra/seperator_@2x.png);
+			background-image: url(/plugins/chakra/images/seperator_@2x.png);
 			background-size: 24px 24px;
 		}
 	}

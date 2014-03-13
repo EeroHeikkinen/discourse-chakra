@@ -1,7 +1,7 @@
-# name: blog
-# about: blog frontend for Discourse
+# name: chakra
+# about: Chakra frontend for Discourse
 # version: 0.1
-# authors: Sam Saffron
+# authors: Eero Heikkinen
 
 gem "multi_xml","0.5.5"
 gem "httparty", "0.12.0"
@@ -10,16 +10,22 @@ gem "rubyoverflow", "1.0.2"
 #::BLOG_HOST = Rails.env.development? ? "dev.samsaffron.com" : "samsaffron.com"
 #::BLOG_DISCOURSE = Rails.env.development? ? "l.discourse" : "discuss.samsaffron.com"
 
-
-module ::Splash
+module ::Chakra
   class Engine < ::Rails::Engine
-    engine_name "splash"
-    isolate_namespace Splash
+    engine_name "chakra"
+    isolate_namespace Chakra
   end
 end
 
-
-Rails.configuration.assets.precompile += ['LAB.js', 'blog.css']
+Rails.configuration.assets.precompile += 
+['chakra.js', 
+  'bootstrap-responsive.min.css', 
+  'bootstrap.min.css', 
+  'custom.css', 'fonts.css', 
+  'main.css', 'responsive.css', 
+  'shortcodes.css', 'supersized.css', 
+  'supersized.shutter.css', 
+  'jquery.fancybox.css']
 
 after_initialize do
 
@@ -107,7 +113,7 @@ after_initialize do
   #load File.expand_path("../app/jobs/blog_update_stackoverflow.rb", __FILE__)
 
   Discourse::Application.routes.prepend do
-    mount ::Splash::Engine, at: "/"
+    mount ::Chakra::Engine, at: "/"
   end
 
   require_dependency "plugin/filter"
