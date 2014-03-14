@@ -60,6 +60,7 @@ module ::OnepagePlugin
 
     def sync_metadata(cooked)
       properties = options(cooked)
+      debugger
       if properties["date"]
         begin
           properties["date"] = DateTime.parse(properties["date"])
@@ -71,7 +72,7 @@ module ::OnepagePlugin
 
               if(start_time)
                 hours, minutes = start_time.split(":").collect(&:to_i)
-                start_time = properties["date"] + hours.hours + minutes.minutes
+                start_time = properties["date"] + hours ? hours.hours : nil + minutes ? minutes.minutes : nil
               else
                 start_time = properties["date"]
               end
@@ -80,8 +81,8 @@ module ::OnepagePlugin
                 hours, minutes = end_time.split(":").collect(&:to_i)
               end
 
-              if end_time and hours and minutes
-                end_time = properties["date"] + hours.hours + minutes.minutes
+              if end_time and hours
+                end_time = properties["date"] + hours.hours + minutes ? minutes.minutes : nil
               else
                 end_time = start_time
               end
@@ -100,6 +101,7 @@ module ::OnepagePlugin
     end
 
     def sync_google_calendar(title, start_time, end_time)
+      debugger
       cal = Google::Calendar.new(:username => SiteSetting.googlecalendar_username,
                            :password => SiteSetting.googlecalendar_password,
                            :app_name => 'Yhteinen-googlecalendar-integration')

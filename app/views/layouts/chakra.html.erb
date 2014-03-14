@@ -73,10 +73,20 @@
       <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
         
         <div id="logo">
-          <a id="goUp" href="#home-slider" title="Chakra | Responsive One Page Template">Chakra Template</a>
+          <a id="goUp" href="<%= Discourse.base_url %>" title="Chakra | Responsive One Page Template">Yhteinen</a>
         </div>
 
-        <% if @project %>
+        <% if @not_onepage %>
+        <nav id="menu">
+          <ul id="menu-nav">
+              <li><a href="<%= Discourse.base_url %>/projects" class="external">Projektit</a></li>
+                <li><a href="<%= Discourse.base_url %>/events" class="external">Tapahtumat</a></li>
+                <li><a href="<%= Discourse.base_url %>/about" class="external">Tietoa</a></li>
+                <li><a href="<%= Discourse.base_url %>/blog" class="external">Blogi</a></li>
+                <li><a href="<%= Discourse.base_url %>/latest" class="external">Keskustelu</a></li>
+            </ul>
+        </nav>
+        <% elsif @project %>
         <nav id="menu">
           <ul id="menu-nav">
                 <li class="current"><a href="<%= Discourse.base_url %>/#work" class="external">Projektit</a></li>
