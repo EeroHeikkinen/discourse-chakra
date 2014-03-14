@@ -119,6 +119,7 @@ module ::OnepagePlugin
         e.title = title
         e.start_time = Time.parse(start_time.to_s)
         e.end_time = Time.parse(end_time.to_s)
+        e.content = @topic.url
       end
 
       Rails.logger.info("Updated event #{event}")
