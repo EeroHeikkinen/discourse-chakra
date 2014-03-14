@@ -100,10 +100,6 @@ background-image: none;
 	color: #FFF;
 }
 
-#eventslist .item-thumbs {
-	width: 100%;
-}
-
 #eventslist .item-thumbs a + img {
 	margin-right: 10px;
 	margin-bottom: -21px;

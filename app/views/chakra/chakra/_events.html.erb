@@ -32,7 +32,7 @@
                         
               <!-- Item Project and Filter Name -->
                         <% @events.each do |e| %>
-                          <li class="item-thumbs <%= e.city ? e.city.downcase : '' %> <%= e.past ? 'past' : 'future' %>">
+                          <li class="item-thumbs span11 <%= e.city ? e.city.downcase : '' %> <%= e.past ? 'past' : 'future' %>">
                                 <!-- Fancybox - Gallery Enabled - Title - Full Image -->
                                 <span class="event-date"><%= e.short_date %></span>
                                 <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<%= e.title %>" href="<%= e.url %>">
@@ -52,6 +52,13 @@
                   </section>
               </div>
             </div>
+
+            <div id="events-calendar"></div>
+            <script>
+            $(function() {
+              $("#events-calendar").fullCalendar({ events: "<%= @calendar_url %>", titleFormat: {month: "MMMM"}});
+            });
+            </script>
 
         </div>
         <!-- End Portfolio Projects -->

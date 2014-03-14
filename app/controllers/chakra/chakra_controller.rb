@@ -8,6 +8,7 @@ module Chakra
 
       @events = OnepagePlugin::events
       @cities = @events.group_by{|e| e.past ? nil : e.city}.keys.compact
+      @calendar_url = SiteSetting.googlecalendar_url
       render "onepage"
     end
 
