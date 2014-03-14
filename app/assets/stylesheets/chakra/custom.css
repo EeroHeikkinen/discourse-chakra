@@ -138,3 +138,11 @@ background-image: none;
 	width: 100%;
 	height: 240px;
 }
+
+.page-alternate .fc-content {
+	background-color: #2F3238;
+}
+
+.fc-widget-header, .fc-widget-content {
+	border: 1px solid rgba(0, 0, 0, 0.3);
+}
