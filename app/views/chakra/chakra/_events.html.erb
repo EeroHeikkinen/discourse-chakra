@@ -53,12 +53,9 @@
               </div>
             </div>
 
-            <div id="events-calendar"></div>
-            <script>
-            $(function() {
-              $("#events-calendar").fullCalendar({ events: "<%= @calendar_url %>", titleFormat: {month: "MMMM"}});
-            });
-            </script>
+            <% if @calendar_url %>
+              <div class="full-calendar" data-calendar-url="<%= @calendar_url %>"></div>
+            <% end %>
 
         </div>
         <!-- End Portfolio Projects -->

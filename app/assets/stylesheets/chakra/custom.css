@@ -146,3 +146,31 @@ background-image: none;
 .fc-widget-header, .fc-widget-content {
 	border: 1px solid rgba(0, 0, 0, 0.3);
 }
+
+.fc-today {
+	position: relative;
+}
+
+.fc-event {
+	border: 1px solid #3a87ad;
+	background-color: #3a87ad;
+	color: #fff;
+	font-size: 12px;
+	line-height: 17px;
+	padding: 2px;
+}
+
+.fc-state-highlight:before {
+	position: absolute;
+	text-shadow: 1px 1px 6px #000000;
+	left: 11px;
+	top: 38px;
+	font-size: 28px;
+	font-weight: 500;
+	color: #FFF;
+	content: "TÄNÄÄN";
+}
+
+.fc-state-highlight {
+	background: #3a87ad;
+}
