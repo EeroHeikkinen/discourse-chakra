@@ -13,16 +13,22 @@ module ::OnepagePlugin
 
   class BlogPost < Metadata
 
+    def sync_metadata(cooked)
+      properties = options(cooked)
+      return unless properties
+      properties.each{|key, value| add_meta_data(key, value)}
+    end
+
     def category 
       'siirappi'
     end
 
-    def is_blogpost?
-      if @topic.category and @topic.category.slug == SiteSetting.blog_category
+    def self.is_blogpost?(topic)
+      if topic.category and topic.category.slug == SiteSetting.blog_category
         return true
       end
 
-      @topic.title.start_with?(I18n.t('blog.prefix.topic'))
+      topic.title.start_with?(I18n.t('blog.prefix.topic'))
     end
 
     def properties

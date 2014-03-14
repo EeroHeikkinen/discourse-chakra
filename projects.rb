@@ -28,12 +28,12 @@ module ::OnepagePlugin
       'siirappi'
     end
 
-    def is_project?
-      if @topic.category and @topic.category.slug == SiteSetting.projects_category
+    def self.is_project?(topic)
+      if topic.category and topic.category.slug == SiteSetting.projects_category
         return true
       end
 
-      @topic.title.start_with?(I18n.t('events.prefix.project'))
+      topic.title.start_with?(I18n.t('events.prefix.project'))
     end
 
     def properties

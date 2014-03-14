@@ -41,13 +41,13 @@ module ::OnepagePlugin
       "#{d.day}.#{d.month}"
     end
 
-    def is_event?
+    def self.is_event?(topic)
       # All topics in events category are events
-      if @topic.category and @topic.category.slug == SiteSetting.events_category
+      if topic.category and topic.category.slug == SiteSetting.events_category
         return true
       end
 
-      @topic.title.start_with?(I18n.t('events.prefix.topic'))
+      topic.title.start_with?(I18n.t('events.prefix.topic'))
     end
 
     def properties
@@ -58,63 +58,64 @@ module ::OnepagePlugin
       Hash[properties.map{|item| [item, I18n.t('events.prefix.'+item)]}]
     end
 
-  end
+    def sync_metadata(cooked)
+      properties = options(cooked)
+      if properties["date"]
+        properties["date"] = Time.strptime(properties["date"], "%d.%m.%Y")
 
-  def sync_metadata
-    properties = options
-    if properties["date"]
-      properties["date"] = Time.strptime(properties["date"], "%d.%m.%Y")
+        if(SiteSetting.googlecalendar_enabled)
+          if(properties["time"])
+            start_time, end_time = properties["time"].split("-").collect(&:strip)
 
-      if(SiteSetting.googlecalendar_enabled)
-        if(properties["time"])
-          start_time, end_time = properties["time"].split("-").collect(&:strip)
+            if(start_time)
+              hours, minutes = start_time.split(":").collect(&:to_i)
+              start_time = properties["date"] + hours.hours + minutes.minutes
+            else
+              start_time = properties["date"]
+            end
 
-          if(start_time)
-            hours, minutes = start_time.split(":").collect(&:to_i)
-            start_time = properties["date"] + hours.hours + minutes.minutes
+            if(end_time)
+              hours, minutes = end_time.split(":").collect(&:to_i)
+            end
+
+            if end_time and hours and minutes
+              end_time = properties["date"] + hours.hours + minutes.minutes
+            else
+              end_time = start_time
+            end
+
+            sync_google_calendar(@topic.title, start_time, end_time)
           else
-            start_time = properties["date"]
-          end
-
-          if(end_time)
-            hours, minutes = end_time.split(":").collect(&:to_i)
-          end
-
-          if end_time and hours and minutes
-            end_time = properties["date"] + hours.hours + minutes.minutes
-          else
-            end_time = start_time
-          end
-
-          sync_google_calendar(topic.title, start_time, end_time)
-        else
-          sync_google_calendar(topic.title, properties["date"], properties["date"]+24.hours)
-        end          
+            sync_google_calendar(@topic.title, properties["date"], properties["date"]+24.hours)
+          end          
+        end
       end
+
+      properties.each{|key, value| add_meta_data("event_" + key, value)}
     end
 
-    properties.each{|key, value| add_meta_data("event_" + key, value)}
+    def sync_google_calendar(title, start_time, end_time)
+      cal = Google::Calendar.new(:username => SiteSetting.googlecalendar_username,
+                           :password => SiteSetting.googlecalendar_password,
+                           :app_name => 'Yhteinen-googlecalendar-integration')
+      return nil unless title and start_time and end_time
+      
+      if @topic.meta_data && @topic.meta_data["calendar_event_id"]
+        calendar_event_id = @topic.meta_data["calendar_event_id"]
+      end
+
+      event = cal.find_or_create_event_by_id(calendar_event_id) do |e|
+        e.title = title
+        e.start_time = start_time
+        e.end_time = end_time 
+      end
+
+      Rails.logger.info("Updated event #{event}")
+
+      add_meta_data("calendar_event_id", event.id)
+    end
+
   end
 
-  def sync_google_calendar(title, start_time, end_time)
-    cal = Google::Calendar.new(:username => SiteSetting.googlecalendar_username,
-                         :password => SiteSetting.googlecalendar_password,
-                         :app_name => 'Yhteinen-googlecalendar-integration')
-    return nil unless title and start_time and end_time
-    
-    if topic.meta_data && topic.meta_data["calendar_event_id"]
-      calendar_event_id = topic.meta_data["calendar_event_id"]
-    end
-
-    event = cal.find_or_create_event_by_id(calendar_event_id) do |e|
-      e.title = self.topic.title
-      e.start_time = start_time
-      e.end_time = end_time 
-    end
-
-    Rails.logger.info("Updated event #{event}")
-
-    add_meta_data("calendar_event_id", event.id)
-  end
 end
 

@@ -6,6 +6,8 @@
 #::BLOG_HOST = Rails.env.development? ? "dev.samsaffron.com" : "samsaffron.com"
 #::BLOG_DISCOURSE = Rails.env.development? ? "l.discourse" : "discuss.samsaffron.com"
 
+gem "google_calendar", "0.3.1"
+
 module ::Chakra
   class Engine < ::Rails::Engine
     engine_name "chakra"
@@ -66,12 +68,6 @@ after_initialize do
         end
       end
 
-      def sync_metadata(cooked)
-        properties = options(cooked)
-        return unless properties
-        properties.each{|key, value| add_meta_data(key, value)}
-      end
-
       def title
         @topic.title
       end
@@ -109,22 +105,18 @@ after_initialize do
 
   Plugin::Filter.register(:after_post_cook) do |post, cooked|
     debugger
-    event = OnepagePlugin::Event.new(post.topic)
-    if event.is_event?
-      event.parse_summary(cooked)
-    else
-      project = OnepagePlugin::Project.new(post.topic)
-      if project.is_project?
-        project.parse_summary(cooked)
-        project.sync_metadata(cooked)
-      else
-        blogpost = OnepagePlugin::BlogPost.new(post.topic)
-        if blogpost.is_blogpost?
-          blogpost.parse_summary(cooked)
-          blogpost.sync_metadata(cooked)
-        end
-      end
+    if OnepagePlugin::Event.is_event?(post.topic)
+      handler = OnepagePlugin::Event.new(post.topic)
+    elsif OnepagePlugin::Project.is_project?(post.topic)
+      handler = OnepagePlugin::Project.new(post.topic)
+    elsif OnepagePlugin::BlogPost.is_blogpost?(post.topic)
+      handler = OnepagePlugin::BlogPost.new(post.topic)
     end
+
+    return unless handler
+
+    handler.parse_summary(cooked)
+    handler.sync_metadata(cooked)
     
     cooked
   end
