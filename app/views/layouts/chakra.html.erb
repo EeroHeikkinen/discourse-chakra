@@ -66,31 +66,6 @@
 </div>
 <!-- End of Splash Screen -->
 
-<!-- Homepage Slider -->
-<%- if @display_slider %>
-<div id="home-slider">  
-    <div class="overlay"></div>
-
-  <div class="container">
-      <div class="row">
-          <div class="span12">
-                <div class="slider-text">
-                    <div id="slidecaption"></div>
-                </div>
-            </div>
-        </div>
-    </div>   
-  
-  <div class="control-nav">
-        <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
-        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
-        <ul id="slide-list"></ul>
-        
-        <a id="nextsection" href="#work"><i class="font-icon-arrow-simple-down"></i></a>
-    </div>
-</div>
-<!-- End Homepage Slider -->
-<%- end %>
 
 <!-- Header -->
 <header>
@@ -124,7 +99,7 @@
         <% else %>
         <nav id="menu">
           <ul id="menu-nav">
-              <li class="current"><a href="<%= Discourse.base_url %>/#work">Projektit</a></li>
+              <li><a href="<%= Discourse.base_url %>/#work">Projektit</a></li>
                 <li><a href="<%= Discourse.base_url %>/#events">Tapahtumat</a></li>
                 <li><a href="<%= Discourse.base_url %>/#about">Tietoa</a></li>
                 <li><a href="<%= Discourse.base_url %>/blog" class="external">Blogi</a></li>
@@ -136,6 +111,32 @@
     </div>
 </header>
 <!-- End Header -->
+
+<!-- Homepage Slider -->
+<%- if @display_slider %>
+<div id="home-slider">  
+    <div class="overlay"></div>
+
+  <div class="container">
+      <div class="row">
+          <div class="span12">
+                <div class="slider-text">
+                    <div id="slidecaption"></div>
+                </div>
+            </div>
+        </div>
+    </div>   
+  
+  <div class="control-nav">
+        <!--<a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
+        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>-->
+        <ul id="slide-list"></ul>
+        
+<!--        <a id="nextsection" href="#work"><i class="font-icon-arrow-simple-down"></i></a>-->
+    </div>
+</div>
+<!-- End Homepage Slider -->
+<%- end %>
 
 <!-- Our Work Section -->
 

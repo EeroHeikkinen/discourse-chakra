@@ -32,7 +32,7 @@
                         
               <!-- Item Project and Filter Name -->
                         <% @events.each do |e| %>
-                          <li class="item-thumbs span10 <%= e.city ? e.city.downcase : '' %> <%= e.past ? 'past' : 'future' %>">
+                          <li class="item-thumbs <%= e.city ? e.city.downcase : '' %> <%= e.past ? 'past' : 'future' %>">
                                 <!-- Fancybox - Gallery Enabled - Title - Full Image -->
                                 <span class="event-date"><%= e.short_date %></span>
                                 <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<%= e.title %>" href="<%= e.url %>">

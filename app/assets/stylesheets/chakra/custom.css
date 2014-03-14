@@ -10,6 +10,24 @@ header #logo a {
 	width: 116px;
 }
 
+header {
+	/*position: absolute;*/
+}
+
+#home-slider {
+	margin-top: -60px;
+}
+
+#home-slider ul#slide-list {
+	bottom: 0;
+	padding: 0;
+	margin: -6px 0 15px 0;
+}
+
+#home-slider .control-nav {
+	background: transparent;
+}
+
 .type-work {
 background-image: none;
 }
@@ -30,8 +48,7 @@ background-image: none;
 .item-thumbs {
 	font-size: 16px;
 	line-height: 25px;
-	color: #545454;
-	background-color: #fff;
+	color: #666666;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
@@ -40,8 +57,15 @@ background-image: none;
 	clear: both;
 }
 
+.page .item-thumbs {
+	background-color: #26292E;
+}
+
+.page-alternate .item-thumbs {
+	background-color: #2F3238;
+}
+
 .item-thumbs h4 {
-	color: #333;
 	margin-bottom: 10px;
 }
 
@@ -58,12 +82,6 @@ background-image: none;
 
 .item-thumbs .hover-wrap .overlay-img-thumb {
 	margin: -37px 0 0 -37px;
-}
-
-#eventslist .item-thumbs {
-	color: #7F8289;
-	background-color: #2F3238;
-	border: 1px solid rgba(0, 0, 0, 0.27);
 }
 
 .event-details {
