@@ -61,33 +61,38 @@ module ::OnepagePlugin
     def sync_metadata(cooked)
       properties = options(cooked)
       if properties["date"]
-        properties["date"] = Time.strptime(properties["date"], "%d.%m.%Y")
+        begin
+          properties["date"] = DateTime.parse(properties["date"])
+          # properties["date"] = Time.strptime(properties["date"], "%d.%m.%Y")
 
-        if(SiteSetting.googlecalendar_enabled)
-          if(properties["time"])
-            start_time, end_time = properties["time"].split("-").collect(&:strip)
+          if(SiteSetting.googlecalendar_enabled)
+            if(properties["time"])
+              start_time, end_time = properties["time"].split("-").collect(&:strip)
 
-            if(start_time)
-              hours, minutes = start_time.split(":").collect(&:to_i)
-              start_time = properties["date"] + hours.hours + minutes.minutes
+              if(start_time)
+                hours, minutes = start_time.split(":").collect(&:to_i)
+                start_time = properties["date"] + hours.hours + minutes.minutes
+              else
+                start_time = properties["date"]
+              end
+
+              if(end_time)
+                hours, minutes = end_time.split(":").collect(&:to_i)
+              end
+
+              if end_time and hours and minutes
+                end_time = properties["date"] + hours.hours + minutes.minutes
+              else
+                end_time = start_time
+              end
+
+              sync_google_calendar(@topic.title, start_time, end_time)
             else
-              start_time = properties["date"]
-            end
-
-            if(end_time)
-              hours, minutes = end_time.split(":").collect(&:to_i)
-            end
-
-            if end_time and hours and minutes
-              end_time = properties["date"] + hours.hours + minutes.minutes
-            else
-              end_time = start_time
-            end
-
-            sync_google_calendar(@topic.title, start_time, end_time)
-          else
-            sync_google_calendar(@topic.title, properties["date"], properties["date"]+24.hours)
-          end          
+              sync_google_calendar(@topic.title, properties["date"], properties["date"]+24.hours)
+            end          
+          end
+        rescue => ex
+          # Couldn't parse date
         end
       end
 
