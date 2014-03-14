@@ -74,9 +74,9 @@ background-image: none;
 
 .event-date {
 	position: absolute;
-	text-shadow: 1px 1px 3px #000000;
-	left: 84px;
-	top: 86px;
+	text-shadow: 1px 1px 6px #000000;
+	left: 70px;
+	top: 49px;
 	font-size: 68px;
 	font-weight: 500;
 	color: #FFF;
