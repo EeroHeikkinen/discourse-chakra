@@ -13,7 +13,9 @@ $(function() {
  'elokuu', 'syyskuu', 'lokakuu', 'marraskuu', 'joulukuu'],
       timeFormat: '',
       eventRender: function(event, element) {
-        event
+        var url = event.description;
+        if(!url) return;
+        $(element).first("a").attr("href", url)
       }
 		});
 	})
