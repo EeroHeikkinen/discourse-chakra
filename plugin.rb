@@ -104,7 +104,6 @@ after_initialize do
   require_dependency "plugin/filter"
 
   Plugin::Filter.register(:after_post_cook) do |post, cooked|
-    debugger
     if OnepagePlugin::Event.is_event?(post.topic)
       handler = OnepagePlugin::Event.new(post.topic)
     elsif OnepagePlugin::Project.is_project?(post.topic)

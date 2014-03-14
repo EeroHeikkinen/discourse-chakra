@@ -72,7 +72,9 @@ module ::OnepagePlugin
 
               if(start_time)
                 hours, minutes = start_time.split(":").collect(&:to_i)
-                start_time = properties["date"] + hours ? hours.hours : nil + minutes ? minutes.minutes : nil
+                start_time = properties["date"] 
+                start_time+= hours.hours unless not hours 
+                start_time+= minutes.minutes unless not minutes
               else
                 start_time = properties["date"]
               end
@@ -82,9 +84,11 @@ module ::OnepagePlugin
               end
 
               if end_time and hours
-                end_time = properties["date"] + hours.hours + minutes ? minutes.minutes : nil
+                end_time = properties["date"]
+                end_time+= hours.hours unless not hours 
+                end_time+= minutes.minutes unless not minutes
               else
-                end_time = start_time
+                end_time = start_time + 3.hours
               end
 
               sync_google_calendar(@topic.title, start_time, end_time)
@@ -101,10 +105,10 @@ module ::OnepagePlugin
     end
 
     def sync_google_calendar(title, start_time, end_time)
-      debugger
       cal = Google::Calendar.new(:username => SiteSetting.googlecalendar_username,
                            :password => SiteSetting.googlecalendar_password,
                            :app_name => 'Yhteinen-googlecalendar-integration')
+
       return nil unless title and start_time and end_time
       
       if @topic.meta_data && @topic.meta_data["calendar_event_id"]
@@ -113,8 +117,8 @@ module ::OnepagePlugin
 
       event = cal.find_or_create_event_by_id(calendar_event_id) do |e|
         e.title = title
-        e.start_time = start_time
-        e.end_time = end_time 
+        e.start_time = Time.parse(start_time.to_s)
+        e.end_time = Time.parse(end_time.to_s)
       end
 
       Rails.logger.info("Updated event #{event}")
