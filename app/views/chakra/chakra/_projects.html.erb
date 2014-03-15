@@ -34,7 +34,9 @@
                         
               <!-- Item Project and Filter Name -->
                         <% @projects.each do |p| %>
-                          <li class="item-thumbs span3 <%= p.category %>">
+                          <li class="item-thumbs <%= p.category %>">
+                            <div class="row">
+                              <div class="span3">
                                 <!-- Fancybox - Gallery Enabled - Title - Full Image -->
                                 <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<%= p.title %>" href="/project/<%= p.id %>">
                                     <span class="overlay-img"></span>
@@ -42,9 +44,17 @@
                                 </a>
                                 <!-- Thumb Image and Description -->
                                 <img src="<%= p.image_url %>" alt="<%= p.summary %>">
-                                <h4><%= p.title %></h4>
-                                <p><%= p.summary %></p>
-                            </li>
+                                <div class="row">
+                                  <div class="span3">
+                                    <div class="item-info">
+                                      <h4><%= p.title %></h4>
+                                      <p><%= p.summary %></p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
                           <!-- End Item Project -->
                         <% end %>
                       </ul>

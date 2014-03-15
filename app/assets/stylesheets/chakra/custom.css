@@ -29,21 +29,16 @@ header {
 }
 
 .type-work {
-background-image: none;
-}
-
-.item-thumbs a + img {
-	margin-left: -21px;
-	margin-right: -21px;
-	margin-top: -21px;
-	margin-bottom: 10px;
-	width: initial;
+	background-image: none;
 }
 
 #projects .item-thumbs a + img {
-	max-width: 311px;
+	max-width: 100%;
 }
 
+.item-thumbs a + img {
+	width: initial;
+}
 
 .item-thumbs {
 	font-size: 16px;
@@ -52,13 +47,12 @@ background-image: none;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
-	padding: 20px;
 	border: 1px solid rgba(0, 0, 0, 0.27);
 	clear: both;
 	min-height: 130px;
 }
 
-.page .event-details {
+.page .item-thumbs {
 	background-color: #26292E;
 }
 
@@ -72,24 +66,6 @@ background-image: none;
 
 .item-thumbs p {
 	margin: 0;
-}
-
-.item-thumbs .hover-wrap .overlay-img {
-	left: -21px;
-	top: -21px;
-	width: 100%;
-	height: 101%;
-}
-
-#eventslist .hover-wrap .overlay-img {
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-}
-
-.item-thumbs .hover-wrap .overlay-img-thumb {
-	margin: -37px 0 0 -37px;
 }
 
 .event-details {
@@ -112,13 +88,10 @@ background-image: none;
 	padding: 0;
 }
 
-#eventslist img {
-	max-width: initial;
-}
-
 #eventslist .item-thumbs a + img {
 	margin: 0;
 	max-width: 100%;
+	max-height: 270px;
 }
 
 #eventslist .item-thumbs h4 {
@@ -149,15 +122,16 @@ background-image: none;
 	height: 240px;
 }
 
-.event-info {
-	padding: 0;
+.item-info {
+	padding: 10px;
 }
 
+/*
 @media (max-width: 768px) {
-	.event-info {
+	.item-info {
 		padding: 10px;
 	}
-}
+}*/
 
 /* full-calendar */
 
@@ -208,7 +182,7 @@ background-image: none;
 }
 
 .fc-state-highlight {
-	background: #DE5E60;
+	background: transparent;
 }
 
 .fc-header-right {
