@@ -32,20 +32,48 @@
                         
               <!-- Item Project and Filter Name -->
                         <% @events.each do |e| %>
+                        <!--
                           <li class="item-thumbs span11 <%= e.city ? e.city.downcase : '' %> <%= e.past ? 'past' : 'future' %>">
-                                <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                <!-- Fancybox - Gallery Enabled - Title - Full Image --
                                 <span class="event-date"><%= e.short_date %></span>
                                 <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<%= e.title %>" href="<%= e.url %>">
                                     <span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-search"></span>
                                 </a>
-                                <!-- Thumb Image and Description -->
+                                <!-- Thumb Image and Description --
                                 <img src="<%= e.image_url%>" alt="<%= e.summary %>">
                                 <h4><%= e.title %></h4>
                                 <h6 class="event-details"><%= e.city ? e.city : 'Paikka X' %> <%= e.place ? '@ ' + e.place : '' %> <%= e.time ? 'klo ' + e.time : '' %></h6>
                                 <p><%= e.summary %></p>
                             </li>
                           <!-- End Item Project -->
+
+                          <li class="item-thumbs <%= e.city ? e.city.downcase : '' %> <%= e.past ? 'past' : 'future' %>">
+                            <div class="row">
+                              <!--<div class="span2 transparent">
+                                
+                              </div>-->
+                              <div class="span3">
+                                <!--<div class="event-date"><%= e.short_date %></div>-->
+                                <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<%= e.title %>" href="<%= e.url %>">
+                                    <span class="overlay-img"></span>
+                                    <span class="overlay-img-thumb font-icon-search"></span>
+                                </a>
+                                <!-- Thumb Image and Description -->
+                                <img src="<%= e.image_url%>" alt="<%= e.summary %>">
+                              </div>
+                              <div class="span9">
+                                <div class="event-info">
+                                  <h4><%= e.short_date + " " + e.title %></h4>
+                                  <h6 class="event-details"><%= e.city ? e.city : 'Paikka X' %> <%= e.place ? '@ ' + e.place : '' %> <%= e.time ? 'klo ' + e.time : '' %></h6>
+                                  <p><%= e.summary %></p>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <!-- End Item Project -->
+
                         <% end %>
                       </ul>
 
