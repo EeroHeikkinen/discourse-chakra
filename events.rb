@@ -60,7 +60,9 @@ module ::OnepagePlugin
 
     def sync_metadata(cooked)
       properties = options(cooked)
-      debugger
+      
+      return unless properties
+      
       if properties["date"]
         begin
           properties["date"] = DateTime.parse(properties["date"])
@@ -110,6 +112,8 @@ module ::OnepagePlugin
                            :app_name => 'Yhteinen-googlecalendar-integration')
 
       return nil unless title and start_time and end_time
+
+      Rails.logger.error("Updated event #{event}")
       
       if @topic.meta_data && @topic.meta_data["calendar_event_id"]
         calendar_event_id = @topic.meta_data["calendar_event_id"]
