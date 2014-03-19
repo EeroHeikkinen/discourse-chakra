@@ -35,7 +35,7 @@ module ::OnepagePlugin
     end
 
     def short_date
-      return unless date
+      return "Kohtalon päivä X" unless date
       d = date.to_datetime
 
       "#{d.day}.#{d.month}"
@@ -62,7 +62,7 @@ module ::OnepagePlugin
       properties = options(cooked)
       
       return unless properties
-      
+
       if properties["date"]
         begin
           properties["date"] = DateTime.parse(properties["date"])
