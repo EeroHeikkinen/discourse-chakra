@@ -19,6 +19,12 @@
             bootbox.alert("No date specified");
             return;
           }
+          
+          var user = that.controllerFor("discoveryTopics").get("currentUser");
+          if(!user) {
+            bootbox.alert("You need to sign up or login to create an event.");
+            return;
+          }
 
           composer.open({
             action: Discourse.Composer.CREATE_TOPIC,
