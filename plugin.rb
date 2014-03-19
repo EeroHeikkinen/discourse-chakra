@@ -42,11 +42,11 @@ after_initialize do
       def options(cooked)
         cooked = PrettyText.cook(@post.raw, topic_id: @post.topic_id) unless cooked
         parsed = Nokogiri::HTML(cooked)
-        options_list = parsed.css("ul").first
-        return unless options_list
+        all_lists = parsed.css("ul")
+        return unless all_lists
 
         read_properties = {}
-        options_list.css("li").each do |i|
+        all_lists.css("li").each do |i|
           text = i.children.to_s.strip
           properties.each do |key|
             prefix = prefixes[key]
@@ -106,18 +106,39 @@ after_initialize do
       :constraints => { :date => /[^\/]+/ }
   end
 
+  # Starting a topic title with "Poll:" will create a poll topic. If the title
+  # starts with "poll:" but the first post doesn't contain a list of options in
+  # it we need to raise an error.
+  Post.class_eval do
+    validate :poll_options
+    def poll_options
+      poll = PollPlugin::Poll.new(self)
+
+      return unless poll.is_poll?
+
+      if poll.options.length == 0
+        self.errors.add(:raw, I18n.t('poll.must_contain_poll_options'))
+      end
+
+      poll.ensure_can_be_edited!
+    end
+  end
+
   require_dependency "plugin/filter"
+
+  def get_handler(post)
+    if OnepagePlugin::Event.is_event?(post.topic)
+      OnepagePlugin::Event.new(post.topic)
+    elsif OnepagePlugin::Project.is_project?(post.topic)
+      OnepagePlugin::Project.new(post.topic)
+    elsif OnepagePlugin::BlogPost.is_blogpost?(post.topic)
+      OnepagePlugin::BlogPost.new(post.topic)
+    end
+  end
 
   Plugin::Filter.register(:after_post_cook) do |post, cooked|
     debugger
-    handler = nil
-    if OnepagePlugin::Event.is_event?(post.topic)
-      handler = OnepagePlugin::Event.new(post.topic)
-    elsif OnepagePlugin::Project.is_project?(post.topic)
-      handler = OnepagePlugin::Project.new(post.topic)
-    elsif OnepagePlugin::BlogPost.is_blogpost?(post.topic)
-      handler = OnepagePlugin::BlogPost.new(post.topic)
-    end
+    handler = get_handler(post)
 
     if(handler) 
       handler.parse_summary(cooked)
