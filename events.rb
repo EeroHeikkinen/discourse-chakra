@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module ::OnepagePlugin
   def self.list
     t = Topic.secured.visible.listable_topics
@@ -113,8 +115,6 @@ module ::OnepagePlugin
 
       return nil unless title and start_time and end_time
 
-      Rails.logger.error("Updated event #{event}")
-      
       if @topic.meta_data && @topic.meta_data["calendar_event_id"]
         calendar_event_id = @topic.meta_data["calendar_event_id"]
       end
