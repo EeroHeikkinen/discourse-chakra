@@ -61,8 +61,11 @@
                                     <span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-search"></span>
                                 </a>
+
                                 <!-- Thumb Image and Description -->
-                                <img src="<%= e.image_url%>" alt="<%= e.summary %>">
+                                <% if e.image_url %>
+                                  <img src="<%= e.image_url%>" alt="<%= e.summary %>">
+                                <% end %>
                               </div>
                               <div class="span9">
                                 <div class="item-info">
