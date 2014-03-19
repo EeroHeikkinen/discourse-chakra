@@ -25,6 +25,7 @@ header {
 }
 
 #home-slider .control-nav {
+	display: none;
 	background: transparent;
 }
 
@@ -109,7 +110,7 @@ header {
 	letter-spacing: 0px;
 	text-transform: none;
 	line-height: 18px;
-	max-width: 380px;
+	max-width: 360px;
 	margin: auto;
 }
 
@@ -135,6 +136,7 @@ header {
 
 /* full-calendar */
 
+
 .page-alternate .fc-content {
 	background-color: #2F3238;
 }
@@ -143,9 +145,10 @@ header {
 	border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
+/*
 .fc-today {
 	position: relative;
-}
+}*/
 
 .fc-event {
 	border: none;
@@ -166,6 +169,16 @@ header {
 	color: #FFF;
 	content: "TÄNÄÄN";
 }*/
+
+.fc-day:hover .fc-create-event {
+	display: block;
+}
+
+.fc-create-event {
+	float: left;
+	margin-left: 5px;
+	display: none;
+}
 
 .fc-state-highlight:before {
 	text-shadow: 1px 1px 6px #000000;

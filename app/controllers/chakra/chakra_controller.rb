@@ -1,7 +1,14 @@
+require 'current_user'
+require_dependency 'discourse'
+
 module Chakra
   class ChakraController < ActionController::Base
+    include CurrentUser
     layout "chakra"
     def onepage
+      if(current_user)
+        @loggedIn = true
+      end
       @projects = OnepagePlugin::projects
       @categories = []
       @display_slider = true
@@ -25,6 +32,9 @@ module Chakra
     end
 
     def events
+      if(current_user)
+        @loggedIn = true
+      end
       @not_onepage = true
       @events = OnepagePlugin::events
       @cities = @events.group_by{|e| e.past ? nil : e.city}.keys.compact

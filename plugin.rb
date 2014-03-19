@@ -15,6 +15,8 @@ module ::Chakra
   end
 end
 
+register_asset 'javascripts/event_route.js'
+
 Rails.configuration.assets.precompile += 
 ['chakra.js', 'chakra.css']
 
@@ -99,11 +101,16 @@ after_initialize do
 
   Discourse::Application.routes.prepend do
     mount ::Chakra::Engine, at: "/"
+    get 'create_event/:date' => 'list#category_latest', 
+      defaults: { category: SiteSetting.events_category },
+      :constraints => { :date => /[^\/]+/ }
   end
 
   require_dependency "plugin/filter"
 
   Plugin::Filter.register(:after_post_cook) do |post, cooked|
+    debugger
+    handler = nil
     if OnepagePlugin::Event.is_event?(post.topic)
       handler = OnepagePlugin::Event.new(post.topic)
     elsif OnepagePlugin::Project.is_project?(post.topic)
@@ -112,10 +119,10 @@ after_initialize do
       handler = OnepagePlugin::BlogPost.new(post.topic)
     end
 
-    return unless handler
-
-    handler.parse_summary(cooked)
-    handler.sync_metadata(cooked)
+    if(handler) 
+      handler.parse_summary(cooked)
+      handler.sync_metadata(cooked)
+    end
     
     cooked
   end
