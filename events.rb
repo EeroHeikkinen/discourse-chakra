@@ -97,7 +97,8 @@ module ::OnepagePlugin
 
               sync_google_calendar(@topic.title, start_time, end_time)
             else
-              sync_google_calendar(@topic.title, properties["date"], properties["date"]+24.hours)
+              # No time, so just use some defaults (no support for full day event)
+              sync_google_calendar(@topic.title, properties["date"]+10.hours, properties["date"]+22.hours)
             end          
           end
         rescue => ex
