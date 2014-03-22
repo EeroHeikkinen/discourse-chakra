@@ -24,6 +24,8 @@ module ::OnepagePlugin
       meta_data("event_date")
     end
 
+
+
     def place
       meta_data("event_place")
     end
@@ -32,8 +34,17 @@ module ::OnepagePlugin
       meta_data("event_time")
     end
 
-    def past
-      date ? Date.yesterday > date.to_datetime : false
+    def when
+      return unless date
+      datetime = date.to_datetime
+      if Date.yesterday > datetime
+        return "past"
+      elsif 30.days.from_now > datetime
+        return "future withinMonth"
+      elsif 365.days.from_now > datetime
+        return "future withinYear"
+      end
+      return "future"
     end
 
     def short_date

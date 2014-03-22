@@ -34,6 +34,7 @@
 <link rel="apple-touch-icon" sizes="72x72" href="#">
 <link rel="apple-touch-icon" sizes="144x144" href="#">
 
+<meta property="og:image" content="<%= Discourse.base_url %>/plugins/chakra/images/logo_dark_@2x.png">
 
 <%= javascript_include_tag "chakra" %>
 
@@ -84,7 +85,7 @@
                 <li><a href="<%= Discourse.base_url %>/about" class="external">Tietoa</a></li>
                 <li><a href="<%= Discourse.base_url %>/blog" class="external">Blogi</a></li>
                 <li><a href="<%= Discourse.base_url %>/latest" class="external">Keskustelu</a></li>
-            </ul>
+            </ul> 
         </nav>
         <% elsif @project %>
         <nav id="menu">

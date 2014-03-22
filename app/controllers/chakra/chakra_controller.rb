@@ -6,6 +6,7 @@ module Chakra
     include CurrentUser
     layout "chakra"
     def onepage
+      debugger
       if(current_user)
         @loggedIn = true
       end
@@ -14,7 +15,7 @@ module Chakra
       @display_slider = true
 
       @events = OnepagePlugin::events
-      @cities = @events.group_by{|e| e.past ? nil : e.city}.keys.compact
+      @cities = cities
       @calendar_url = SiteSetting.googlecalendar_url
       render "onepage"
     end
@@ -37,8 +38,11 @@ module Chakra
       end
       @not_onepage = true
       @events = OnepagePlugin::events
-      @cities = @events.group_by{|e| e.past ? nil : e.city}.keys.compact
+      @cities = cities
       @calendar_url = SiteSetting.googlecalendar_url
+      if params[:narrow]
+        @narrow = true
+      end
       render "events"
     end
 
@@ -55,6 +59,11 @@ module Chakra
     def project
       @project = OnepagePlugin::find_project(params[:project])
       render "project"
+    end
+
+    private 
+    def cities
+      @events.group_by{|e| e.when == 'past' ? nil : e.city}.keys.compact
     end
   end
 end

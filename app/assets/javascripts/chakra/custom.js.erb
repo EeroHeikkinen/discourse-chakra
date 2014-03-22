@@ -6,7 +6,7 @@ $(function() {
 		{
 			events: url, 
 			titleFormat: {
-				month: "MMMM"
+				month: "'Kalenteri: 'MMMM"
 			},
       dayNames: ['Sunnuntai', 'Maanantai', 'Tiistai', 'Keskiviikko',
  'Torstai', 'Perjantai', 'Lauantai'],
@@ -47,4 +47,74 @@ $(function() {
       }
 		});
 	})
+});
+
+customFilter = function (container){
+  var filters = {}
+  var $container = $('#' + container);
+  
+  $container.imagesLoaded(function() {
+    $container.isotope({
+      // options
+      animationEngine: 'best-available',
+      itemSelector : '.item-thumbs',
+      layoutMode : 'straightDown',
+      filter: ':not(.past)'
+    });
+  });
+
+  
+  // filter items when filter link is clicked
+  var $optionSets = $('#' + container + '-options .option-set'),
+    $optionLinks = $optionSets.find('a');
+
+/*
+  var filterFns = {
+    withinMonth: function() {
+      var date = $(this).attr('data-date');
+      if(!date) return false;
+      date = new Date(date);
+
+      var today = new Date();
+      var dayOffset = 30;
+      var millisecondOffset = dayOffset * 24 * 60 * 60 * 1000;
+      var endTime = today.getTime() + millisecondOffset; 
+
+      return date.getTime() < endTime;
+    }
+  };
+*/
+
+  $optionLinks.click(function(){
+    var $this = $(this);
+    // don't proceed if already selected
+    if ( $this.hasClass('selected') ) {
+      return false;
+    }
+    var $optionSet = $this.parents('.option-set');
+    $optionSet.find('.selected').removeClass('selected');
+    $this.addClass('selected');
+  
+    // make option object dynamically, i.e. { filter: '.my-filter-class' }
+    var options = {},
+      key = $optionSet.attr('data-option-key'),
+      value = $this.attr('data-option-value');
+
+    filters[ key ] = value;
+
+    var isoFilters = [];
+    for ( var prop in filters ) {
+      isoFilters.push( filters[ prop ] )
+    }
+    var selector = isoFilters.join('');
+    
+    $container.isotope( { filter: selector } );
+    
+    return false;
+  });
+}
+
+$(document).ready(function(){
+  customFilter('projects');
+  customFilter('eventslist');
 });
