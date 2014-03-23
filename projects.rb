@@ -34,6 +34,8 @@ module ::OnepagePlugin
     end
 
     def self.is_project?(topic)
+      return false unless topic
+      
       projects_category_id = Category.query_parent_category(SiteSetting.projects_category);
       return unless projects_category_id
 

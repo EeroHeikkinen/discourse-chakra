@@ -24,6 +24,8 @@ module ::OnepagePlugin
     end
 
     def self.is_blogpost?(topic)
+      return false unless topic
+      
       if topic.category and topic.category.slug == SiteSetting.blog_category
         return true
       end

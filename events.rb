@@ -55,6 +55,7 @@ module ::OnepagePlugin
     end
 
     def self.is_event?(topic)
+      return false unless topic
       # All topics in events category are events
       if topic.category and topic.category.slug == SiteSetting.events_category
         return true
