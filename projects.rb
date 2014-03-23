@@ -34,7 +34,10 @@ module ::OnepagePlugin
     end
 
     def self.is_project?(topic)
-      if topic.category and topic.category.slug == SiteSetting.projects_category
+      projects_category_id = Category.query_parent_category(SiteSetting.projects_category);
+      return unless projects_category_id
+
+      if topic.category and topic.category.id == projects_category_id or topic.category.parent_category_id == projects_category_id
         return true
       end
 

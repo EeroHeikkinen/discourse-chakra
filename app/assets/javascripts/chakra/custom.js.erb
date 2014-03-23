@@ -49,7 +49,7 @@ $(function() {
 	})
 });
 
-customFilter = function (container){
+customFilter = function (container, layoutMode){
   var filters = {}
   var $container = $('#' + container);
   
@@ -58,7 +58,7 @@ customFilter = function (container){
       // options
       animationEngine: 'best-available',
       itemSelector : '.item-thumbs',
-      layoutMode : 'straightDown',
+      layoutMode : layoutMode? layoutMode: 'straightDown',
       filter: ':not(.past)'
     });
   });
@@ -115,6 +115,6 @@ customFilter = function (container){
 }
 
 $(document).ready(function(){
-  customFilter('projects');
-  customFilter('eventslist');
+  customFilter('projects', 'fitRows');
+  customFilter('eventslist', 'straightDown');
 });
