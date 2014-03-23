@@ -1,10 +1,15 @@
 module ::OnepagePlugin
   def self.list_projects
-    t = Topic.secured.visible.listable_topics
+    projects_category_id = Category.query_parent_category(SiteSetting.projects_category);
+    return unless projects_category_id
+
+    Topic.visible.listable_topics
       .joins(:category)
-      .where("(categories.slug = '" + SiteSetting.projects_category + "'" +
+      .where("(categories.parent_category_id = ? " +
+      " OR categories.id = ? " +
       " AND topics.title not like 'About the%')" +
-      " OR topics.title like '" + I18n.t('events.prefix.topic') + "%'")
+      " OR topics.title like '" + I18n.t('events.prefix.topic') + "%'", 
+      projects_category_id, projects_category_id)
   end
 
   def self.projects
