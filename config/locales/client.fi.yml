@@ -1,0 +1,21 @@
+en:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          events: 'Tapahtumat'
+  js:
+    event:
+      title: 'Tapahtuma'
+      date: 'Pvm'
+    past_events: 'Menneet tapahtumat'
+    upcoming_events: 'Tulevat tapahtumat'
+    event_template: |
+      Kirjoita tämän tekstin tilalle lyhyt kuvaus tapahtumastasi. Voit myös lisätä kuvan, joka tulee näkyviin tapahtumalistaukseen.
+      
+      --- 
+      
+      - Date: {{date}}
+      - City: Kaupunki
+      - Place: Paikka
+    event_placeholder_title: 'Kirjoita tähän tapahtumasi otsikko'

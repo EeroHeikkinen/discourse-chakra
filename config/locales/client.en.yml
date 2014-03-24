@@ -11,11 +11,12 @@ en:
     past_events: 'Past events'
     upcoming_events: 'Upcoming events'
     event_template: |
-      Kirjoita tämän tekstin tilalle lyhyt kuvaus tapahtumastasi. Voit myös lisätä kuvan, joka tulee näkyviin tapahtumalistaukseen.
+      Write a short summary of your event in the place of this text. You can also add a picture, which will be visible in the event listing.
       
       --- 
       
       - Date: {{date}}
-      - City: Kaupunki
-      - Place: Paikka
-    event_placeholder_title: 'Kirjoita tähän tapahtumasi otsikko'
+      - City: Your city here
+      - Place: Your place here
+      - Time: Your time here
+    event_placeholder_title: 'Write the title of your event here'
