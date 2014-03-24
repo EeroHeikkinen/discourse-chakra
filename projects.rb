@@ -8,7 +8,7 @@ module ::OnepagePlugin
       .where("(categories.parent_category_id = ? " +
       " OR categories.id = ? " +
       " AND topics.title not like 'About the%')" +
-      " OR topics.title like '" + I18n.t('events.prefix.topic') + "%'", 
+      " OR topics.title like '" + I18n.t('projects.prefix.topic') + "%'", 
       projects_category_id, projects_category_id)
   end
 
