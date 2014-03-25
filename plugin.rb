@@ -21,77 +21,7 @@ Rails.configuration.assets.precompile +=
 ['chakra.js', 'chakra.css']
 
 after_initialize do
-
-  module ::OnepagePlugin
-    class Metadata
-      def initialize(topic)
-        @topic = topic
-        @post = topic.posts.first
-      end
-
-      def meta_data(key)
-        return unless @topic.meta_data
-        @topic.meta_data[key]
-      end
-
-      def add_meta_data(key,value)
-        @topic.update_attribute('meta_data', (@topic.meta_data || {}).merge(key => value))
-      end
-
-      # Read event options from post
-      def options(cooked)
-        cooked = PrettyText.cook(@post.raw, topic_id: @post.topic_id) unless cooked
-        parsed = Nokogiri::HTML(cooked)
-        all_lists = parsed.css("ul")
-        return unless all_lists
-
-        read_properties = {}
-        all_lists.css("li").each do |i|
-          text = i.children.to_s.strip
-          properties.each do |key|
-            prefix = prefixes[key]
-            if text.start_with?(prefix)
-              read_properties[key] = text.sub(prefix, '').strip
-              break
-            end
-          end
-        end
-
-        read_properties
-      end
-
-      def parse_summary(cooked)
-        split = cooked.gsub("<hr/>", "<hr>").split("<hr>")
-
-        if split.length > 1
-          summary = Nokogiri::HTML.fragment(split[0]).content.strip
-          add_meta_data("summary", summary)
-          cooked = split[1..-1].join("<hr>")
-        end
-      end
-
-      def title
-        @topic.title
-      end
-
-      def id 
-        @topic.id
-      end
-
-      def url
-        Topic::url(@topic.id, @topic.slug)
-      end
-
-      def summary
-        meta_data("summary")
-      end
-
-      def image_url
-        @topic.image_url
-      end
-    end
-  end
-
+  load File.expand_path("../metadata.rb", __FILE__)
   load File.expand_path("../events.rb", __FILE__)
   load File.expand_path("../projects.rb", __FILE__)
   load File.expand_path("../blogposts.rb", __FILE__)
@@ -104,6 +34,18 @@ after_initialize do
     get 'create_event/:date' => 'list#category_latest', 
       defaults: { category: SiteSetting.events_category },
       :constraints => { :date => /[^\/]+/ }
+  end
+
+  Category.class_eval do
+    def url
+      if slug == SiteSetting.events_category
+        return "/events"
+      end
+      if slug == SiteSetting.projects_category
+        return "/projects"
+      end
+      return super
+    end
   end
 
   # Starting a topic title with "Poll:" will create a poll topic. If the title
