@@ -1,5 +1,6 @@
 Chakra::Engine.routes.draw do
   get "/blog" => "chakra#blog"
+  get "/blog/:blogpost" => "chakra#blogpost"
   get "/projects" => "chakra#projects"
   get "/about" => "chakra#about"
   get "/events" => "chakra#events"
