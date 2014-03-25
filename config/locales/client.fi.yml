@@ -1,4 +1,4 @@
-en:
+fi:
   admin_js:
     admin:
       site_settings:
@@ -8,6 +8,9 @@ en:
     event:
       title: 'Tapahtuma'
       date: 'Pvm'
+    projects: 'Projektit'
+    blog: 'Blogi'
+    events: 'Tapahtumat'
     past_events: 'Menneet tapahtumat'
     upcoming_events: 'Tulevat tapahtumat'
     event_template: |
@@ -18,4 +21,7 @@ en:
       - Date: {{date}}
       - City: Kaupunki
       - Place: Paikka
+    idea_template: |
+      Kirjoita kuvaus ideastasi. Mitä resursseja tarvitaan? 
     event_placeholder_title: 'Kirjoita tähän tapahtumasi otsikko'
+    idea_placeholder_title: 'Kirjoita tähän projektisi otsikko'

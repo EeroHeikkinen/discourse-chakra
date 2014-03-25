@@ -2,6 +2,9 @@ events:
   events_category:
     default: 'events'
     client: true
+  ideas_category:
+    default: 'ideas'
+    client: true
   projects_category:
     default: 'projects'
     client: true

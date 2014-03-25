@@ -34,6 +34,8 @@ after_initialize do
     get 'create_event/:date' => 'list#category_latest', 
       defaults: { category: SiteSetting.events_category },
       :constraints => { :date => /[^\/]+/ }
+    get 'create_idea' => 'list#category_latest',
+      defaults: { category: SiteSetting.ideas_category }
   end
 
   Category.class_eval do

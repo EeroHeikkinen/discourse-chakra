@@ -1,18 +1,18 @@
 <div id="work" class="page">
   <div class="container">
-      <!-- Title Page -->
-        <div class="row">
-            <div class="span12">
-                <div class="title-page">
-                    <h2 class="title">Projektit</h2>
-                    <h3 class="title-description">Tällä sivustolla suunnitellaan ja toteutetaan projekteja.</h3>              
-                </div>    
-            </div>
-        </div>
+    <!-- Title Page -->
+      <div class="row">
+          <div class="span12">
+              <div class="title-page">
+                  <h2 class="title">Projektit</h2>   
+              </div>    
+          </div>
+
+      </div>
 
  <!-- Portfolio Projects -->
         <div class="row">
-          <div class="span12">
+            <!--<div class="span12">
               <!-- Filter -->
               <!--
                 <nav id="projects-options" class="work-nav">
@@ -24,11 +24,11 @@
                         <% end %>
                     </ul>
                 </nav>
-                <!-- End Filter -->
-            </div>
+              </div>-->
             
-            <div class="span12">
-              <div class="row">
+            <div class="span9">
+              <h3 class="spec">Käynnissä</h3>
+              <div class="row">                
                   <section id="projects">
                       <ul id="thumbs">
                         
@@ -62,9 +62,17 @@
                   </section>
               </div>
             </div>
-        </div>
-        <!-- End Portfolio Projects -->
+            <div class="span3">
+              <h3 class="spec">Suunnitteilla</h3>
+              <ul>
+                <% @ideas.each do |i| %>
+                  <li><a href="<%= i.url %>"><%= i.title %></a></li>
+                <% end %>
+              </ul>
+              <h3 class="spec spec-offset">Ideoita <span class="color-text">?</span></h3> Saattaisiko sinulla olla toimintaamme sopiva idea? Hienoa! <a href="<%= Discourse.base_url %>/create_idea" class="button button-small">Luo ehdotus</a>
+            </div>
     </div>
+  </div>
 </div>
 
 <!-- End Our Work Section -->

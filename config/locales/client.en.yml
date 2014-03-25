@@ -8,6 +8,9 @@ en:
     event:
       title: 'Event'
       date: 'Date'
+    projects: 'Projects'
+    blog: 'Blog'
+    events: 'Events'
     past_events: 'Past events'
     upcoming_events: 'Upcoming events'
     event_template: |
