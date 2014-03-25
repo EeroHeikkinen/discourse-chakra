@@ -6,7 +6,6 @@ module Chakra
     include CurrentUser
     layout "chakra"
     def onepage
-      debugger
       if(current_user)
         @loggedIn = true
       end
