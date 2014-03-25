@@ -57,6 +57,11 @@ module Chakra
       render "blog"
     end
 
+    def blogpost
+      @blogpost = OnepagePlugin::find_blogpost(params[:blogpost])
+      render "blogpost"
+    end
+
     def project
       @project = OnepagePlugin::find_project(params[:project])
       render "project"

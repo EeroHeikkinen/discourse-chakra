@@ -6,33 +6,26 @@
               <% @blogposts.each do |p| %>
             	<article class="post">
                 	<div class="post-thumb">
-                    	<a href="blog-details.html">
+                    	<a href="blog/<%= p.id %>">
                         	<img src="<%= p.image_url %>" alt="<%= p.title %>" />
                         </a>
                     </div>
                 	<h2 class="entry-title">
-                    	<a href="blog-details.html"><%= p.title %></a>
+                    	<a href="blog/<%= p.id %>"><%= p.title %></a>
                     </h2>
-                    <div class="entry-meta">
-                        <span class="author">By <%= p.author %></span>
-                        <span class="divider">/</span>
-                        <span class="published"><%= p.created_at.to_formatted_s(:long_ordinal) %></span>
-                        <span class="divider">/</span>
-                        <span class="comment-count">
-                        <a href="blog-details.html"><%= p.reply_count %> Comments</a>
-                        </span>
-                    </div>
+                    <%= render partial: "blogmeta", object: p %>
                     
                     <div class="entry-content">
                     	<p><%= p.summary %></p>
                         
                         <p>
-                        	<a class="more-link" href="blog-details.html">Continue Reading...</a>
+                        	<a class="more-link" href="blog/<%= p.id %>">Continue Reading...</a>
                         </p> 
                     </div>                  
                 </article>
               <% end %>
                 
+                <!--
                 <div class="navigation page-navigation">
                 	<a class="prev" href="#">Prev</a>
                     <a class="number">1</a>
@@ -42,6 +35,7 @@
                     <a class="number">5</a>
                     <a class="next" href="#">Next</a>
                 </div>
+                -->
                 
             </div>
         </div>

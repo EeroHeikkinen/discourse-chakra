@@ -1,0 +1,9 @@
+<div class="entry-meta">
+    <span class="author">By <%= blogmeta.author %></span>
+    <span class="divider">/</span>
+    <span class="published"><%= blogmeta.created_at.to_formatted_s(:long_ordinal) %></span>
+    <span class="divider">/</span>
+    <span class="comment-count">
+    	<a href="<%= Discourse.base_url %>/blog/<%= blogmeta.id %>"><%= blogmeta.reply_count %> Comments</a>
+    </span>
+</div>

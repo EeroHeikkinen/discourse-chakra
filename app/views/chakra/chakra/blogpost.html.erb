@@ -1,0 +1,100 @@
+<!-- Blog Section -->
+<div id="blog" class="page-alternate">
+	<div class="container">
+    	<div class="row">
+        	<div class="span12">
+            
+             	<!-- Start Article -->
+            	<article class="post">
+                	<div class="post-thumb">
+                       	<img src="<%= @blogpost.image_url %>"/>
+                    </div>
+                	<h2 class="entry-title">
+                    	<%= @blogpost.title %>
+                    </h2>
+                    <%= render partial: "blogmeta", object: @blogpost %>
+                    
+                    <div class="entry-content">
+                        <%= @blogpost.cooked.html_safe %>
+                    </div>     
+                    <!--
+                    <div class="entry-meta entry-footer">
+                    	<span class="entry-categories">
+                    		Posted in:
+                    		<a href="#">Freebies</a>
+                    	</span>
+                    
+                        <span class="entry-tags">
+                            <span class="divider">/</span>
+                            Tagged:
+                            <a href="#">Freebies</a>, <a href="#">News</a>, <a href="#">Photography</a>
+                        </span>
+                    </div>-->
+             
+                </article>
+                <!-- End Article -->
+                
+                <!-- Start Comments -->
+
+                <div id="comments">
+                	<h3 class="comments-title"><%= @blogpost.posts_count - 1 %> Comments</h3>
+                    
+                    <% if @blogpost.reply_count %>
+                        <ol class="commentlist">
+                          <% @blogpost.posts.offset(1).each do |r| %>
+    						<li class="comment">
+                                <div id="comment-1">
+                                    <div class="comment-side">
+                                        <img class="avatar" src="<%= r.user.avatar_template.gsub('{size}', '120') %>" alt="Avatar">
+                                    </div>
+        							<div class="comment-cont">
+        								<div class="comment-author">
+        									<cite class="fn"><%= r.user.username %></cite>
+        								</div>
+                                        <div class="comment-meta commentmetadata">
+                                            <a href="#"><%= r.created_at.to_formatted_s(:long_ordinal) %></a> / <a class="comment-reply-link" href="<%= r.url %>">Reply</a>
+                                        </div>
+                                        <div class="comment-body">
+                                          <%= r.cooked.html_safe %>
+                                        </div>
+        							</div>
+        						</div>
+    						</li>
+                          <% end %>
+    					</ol>
+                    <% end %>
+                    <!-- End Comments --> 
+                    
+                    <!-- Start Reply -->
+                    <div id="respond">
+                    	<a href="<%= @blogpost.url %>"><h3 id="reply-title">Leave a Reply</h3></a>
+                        <!--
+                        <form id="comment-form" class="comment-form" method="post" action="<%= Discourse.base_url %>/posts">
+                            <input type="hidden" value="<%= @blogpost.id %>" name="topic_id"/>
+                            <input type="hidden" value="<%= @blogpost.category.id %>" name="category"/>
+                        	<p class="comment-name">
+                                <input type="text" placeholder="Your Name" value="" name="name" />
+                            </p>
+                            <p class="comment-email">
+                                <input type="text" placeholder="Your Email Address" value="" name="email" />
+                            </p>
+                            <p class="comment-url">
+                                <input type="text" placeholder="Your URL" value="" name="url" />
+                            </p>
+                            <p class="comment-message">
+                                <textarea placeholder="Your Message" name="raw" rows="12" cols="40"></textarea>
+                            </p>
+                            <p class="comment-submit">
+                                <a onclick="$(this).closest('form').submit();" id="comment-submit" class="submit" href="#">Send Your Comment</a>
+                            </p>
+                        </form> 
+                        -->
+                    </div>
+                    <!-- End Reply -->
+            	</div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Blog Section -->
