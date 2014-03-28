@@ -62,7 +62,7 @@ module Chakra
 
     def about
       @not_onepage = true
-      @showteam = true
+      @showteam = false
       render "about"
     end
 
