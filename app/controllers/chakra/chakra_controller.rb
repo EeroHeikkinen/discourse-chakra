@@ -63,11 +63,7 @@ module Chakra
     def about
       @not_onepage = true
       @showteam = true
-      if params[:draft]
-        render "about_draft"
-      else
-        render "about"
-      end
+      render "about"
     end
 
     def blog
