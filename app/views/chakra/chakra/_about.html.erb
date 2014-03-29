@@ -18,7 +18,7 @@
     </div>
     <!-- End Title Page -->
     
-    <div class="row margin-40">
+    <div class="row margin-60">
       <div class="span4">
           <h3>Mitä?</h3>
       <p>Tarjoamme innostavaa yhdessä tekemistä joka ei perustu taloudelliselle hyödylle. Tarkoituksenamme on luoda puitteet joissa yhdessä tekemisen, oppimisen ja kokeilun kautta voi luoda yhteyttä itseen, toisiin ja toisista huolehtimiseen.</p>
@@ -36,7 +36,15 @@
         </div>
         
     </div>
-    
+
+    <div class="row">
+    <div class="span4 offset4">
+    <a href="<%= Discourse.base_url %>/faq"><h2><span class="font-icon-group"></span> Yhteisön säännöt</h2></a>
+    </div>
+    </div>
+
+    <% if @showteam %>
+
     <div class="sep">
       <span class="separator"></span>
     </div>
@@ -44,7 +52,7 @@
     <!-- People -->
     <div class="row">
       
-      <% if @showteam %>
+      
         <!-- Start Profile -->
       <div class="span3 profile">
           <div class="image-wrap">
