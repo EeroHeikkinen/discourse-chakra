@@ -65,25 +65,35 @@ customFilter = function (container, layoutMode){
 
   
   // filter items when filter link is clicked
-  var $optionSets = $('#' + container + '-options .option-set'),
+  var $optionSets = $('.' + container + '-options .option-set'),
     $optionLinks = $optionSets.find('a');
 
-/*
-  var filterFns = {
-    withinMonth: function() {
-      var date = $(this).attr('data-date');
-      if(!date) return false;
-      date = new Date(date);
-
-      var today = new Date();
-      var dayOffset = 30;
-      var millisecondOffset = dayOffset * 24 * 60 * 60 * 1000;
-      var endTime = today.getTime() + millisecondOffset; 
-
-      return date.getTime() < endTime;
+  var less = ":nth-child(-n+5)";
+  var limiter = less;
+  var name = container;
+  var $toggle = $("#" + container + "-toggle");
+  
+  var selector = function() {
+    var isoFilters = [];
+    for ( var prop in filters ) {
+      isoFilters.push( filters[ prop ] )
     }
-  };
-*/
+    return isoFilters.join('') || '*';
+  }
+
+  $toggle.click(function() {
+    var $this = $(this);
+    if(!limiter) {
+      limiter = less;
+      $this.text("Lisää")
+    }
+    else {
+      limiter = "";
+      $this.text("Vähemmän")
+    }
+
+    $container.isotope( { filter: selector() + limiter });
+  })
 
   $optionLinks.click(function(){
     var $this = $(this);
@@ -93,7 +103,6 @@ customFilter = function (container, layoutMode){
     }
     var $optionSet = $this.parents('.option-set');
     $optionSet.find('.selected').removeClass('selected');
-    $this.addClass('selected');
   
     // make option object dynamically, i.e. { filter: '.my-filter-class' }
     var options = {},
@@ -101,14 +110,18 @@ customFilter = function (container, layoutMode){
       value = $this.attr('data-option-value');
 
     filters[ key ] = value;
+    $this.addClass('selected');
 
-    var isoFilters = [];
-    for ( var prop in filters ) {
-      isoFilters.push( filters[ prop ] )
-    }
-    var selector = isoFilters.join('');
+    limiter = less;
     
-    $container.isotope( { filter: selector } );
+    $container.isotope( { filter: selector() + limiter }, 
+      function($changedItems, instance) {
+          var all = instance.$allAtoms;
+          var cur = instance.$filteredAtoms.length;
+          var full = all.filter(selector).length;
+          if(cur < full || !limiter) $toggle.show();
+          else $toggle.hide();
+        } );
     
     return false;
   });
@@ -118,3 +131,13 @@ $(document).ready(function(){
   customFilter('projects', 'fitRows');
   customFilter('eventslist', 'straightDown');
 });
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-49613065-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
