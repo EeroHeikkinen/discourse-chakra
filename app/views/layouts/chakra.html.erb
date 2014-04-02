@@ -52,6 +52,15 @@
   })();
 </script>
 <!-- End Analytics -->
+
+<script type="text/javascript">
+CHAKRA = window.CHAKRA || {};
+CHAKRA.I18n = {
+  intro: "<%= I18n.t 'chakra.intro' %>",
+  calendar: "<%= I18n.t 'chakra.calendar' %>",
+  today: "<%= I18n.t 'chakra.today' %>"
+}
+</script>
 </head>
 
 
@@ -75,48 +84,15 @@
           <a id="goUp" href="<%= Discourse.base_url %>" title="Chakra | Responsive One Page Template">Yhteinen</a>
         </div>
 
-        <% if true %>
         <nav id="menu">
           <ul id="menu-nav">
-              <li><a href="<%= Discourse.base_url %>/projects" class="external">Projektit</a></li>
-                <li><a href="<%= Discourse.base_url %>/events" class="external">Tapahtumat</a></li>
-                <li><a href="<%= Discourse.base_url %>/about" class="external">Tietoa</a></li>
-                <li><a href="<%= Discourse.base_url %>/blog" class="external">Blogi</a></li>
-                <li><a href="<%= Discourse.base_url %>/categories" class="external">Keskustelu</a></li>
+              <li><a href="<%= Discourse.base_url %>/projects" class="external"><%= I18n.t 'chakra.projects' %></a></li>
+                <li><a href="<%= Discourse.base_url %>/events" class="external"><%= I18n.t 'chakra.events' %></a></li>
+                <li><a href="<%= Discourse.base_url %>/about" class="external"><%= I18n.t 'chakra.info' %></a></li>
+                <li><a href="<%= Discourse.base_url %>/blog" class="external"><%= I18n.t 'chakra.blog' %></a></li>
+                <li><a href="<%= Discourse.base_url %>/categories" class="external"><%= I18n.t 'chakra.discussion' %></a></li>
             </ul> 
         </nav>
-        <% elsif @project %>
-        <nav id="menu">
-          <ul id="menu-nav">
-                <li class="current"><a href="<%= Discourse.base_url %>/#work" class="external">Projektit</a></li>
-                <li><a href="<%= Discourse.base_url %>/#events" class="external">Tapahtumat</a></li>
-                <li><a href="<%= Discourse.base_url %>/#about" class="external">Tietoa</a></li>
-                <li><a href="<%= Discourse.base_url %>/blog" class="external">Blogi</a></li>
-                <li><a href="<%= Discourse.base_url %>/categories" class="external">Keskustelu</a></li>
-            </ul>
-        </nav>
-        <% elsif @blogposts %>
-        <nav id="menu">
-          <ul id="menu-nav">
-                <li><a href="<%= Discourse.base_url %>/#work">Projektit</a></li>
-                <li><a href="<%= Discourse.base_url %>/#events" class="external">Tapahtumat</a></li>
-                <li><a href="<%= Discourse.base_url %>/#about" class="external">Tietoa</a></li>
-                <li class="current"><a href="<%= Discourse.base_url %>/blog" class="external">Blogi</a></li>
-                <li><a href="<%= Discourse.base_url %>/categories" class="external">Keskustelu</a></li>
-            </ul>
-        </nav>        
-        <% else %>
-        <nav id="menu">
-          <ul id="menu-nav">
-              <li><a href="<%= Discourse.base_url %>/#work">Projektit</a></li>
-                <li><a href="<%= Discourse.base_url %>/#events">Tapahtumat</a></li>
-                <li><a href="<%= Discourse.base_url %>/#about">Tietoa</a></li>
-                <li><a href="<%= Discourse.base_url %>/blog" class="external">Blogi</a></li>
-                <li><a href="<%= Discourse.base_url %>/categories" class="external">Keskustelu</a></li>
-            </ul>
-        </nav>
-        <% end %>
-        
     </div>
 </header>
 <!-- End Header -->

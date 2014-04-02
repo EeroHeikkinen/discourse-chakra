@@ -4,7 +4,7 @@
       <div class="row">
           <div class="span12">
               <div class="title-page">
-                  <h2 class="title">Projektit</h2>   
+                  <h2 class="title"><%= I18n.t 'chakra.projects' %></h2>   
               </div>    
           </div>
 
@@ -27,7 +27,7 @@
               </div>-->
             
             <div class="span9">
-              <h3 class="spec">Käynnissä</h3>
+              <h3 class="spec"><%= I18n.t 'chakra.ongoing' %></h3>
               <div class="row">                
                   <section id="projects">
                       <ul id="thumbs">
@@ -63,13 +63,13 @@
               </div>
             </div>
             <div class="span3">
-              <h3 class="spec">Suunnitteilla</h3>
+              <h3 class="spec"><%= I18n.t 'chakra.planned' %></h3>
               <ul>
                 <% @ideas.each do |i| %>
                   <li><a href="<%= i.url %>"><%= i.title %></a></li>
                 <% end %>
               </ul>
-              <h3 class="spec spec-offset">Ideoita <span class="color-text">?</span></h3> Saattaisiko sinulla olla toimintaamme sopiva idea? Hienoa! <a href="<%= Discourse.base_url %>/create_idea" class="button button-small">Luo ehdotus</a>
+              <h3 class="spec spec-offset"><%= I18n.t 'chakra.ideas' %> <span class="color-text">?</span></h3> <%= I18n.t 'chakra.ideas_briefing' %> <a href="<%= Discourse.base_url %>/create_idea" class="button button-small"><%= I18n.t 'chakra.new_idea' %></a>
             </div>
     </div>
   </div>

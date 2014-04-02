@@ -6,10 +6,10 @@
     <div class="row">
         <div class="span12">
             <div class="title-page">
-                <h2 class="title">Yhteisöstä</h2>
+                <h2 class="title"><%= I18n.t 'chakra.about_community' %></h2>
                 
                 <div class="page-description">
-                    <p>Yhteinen on vuonna 2013 perustettu yhteisö, joka järjestää ruohonjuuritason luovaa toimintaa ja tapahtumia, tiedottaa tapahtumista ja saattaa ihmisiä yhteen. Yhteisen takana on joukko yhteisöllisyydestä, rakentavasta keskustelusta ja kantaaottavasta luovuudesta kiinnostuneita ihmisiä. Toimintamme ei perustu millekään tietylle ideologialle emmekä tavoittele taloudellista voittoa.
+                    <p><%= I18n.t 'chakra.info_intro' %>
                     </p>
                 </div>
                 
@@ -20,26 +20,25 @@
     
     <div class="row margin-60">
       <div class="span4">
-          <h3>Mitä?</h3>
-      <p>Tarjoamme innostavaa yhdessä tekemistä joka ei perustu taloudelliselle hyödylle. Tarkoituksenamme on luoda puitteet joissa yhdessä tekemisen, oppimisen ja kokeilun kautta voi luoda yhteyttä itseen, toisiin ja toisista huolehtimiseen.</p>
+          <h3><%= I18n.t 'chakra.what' %>?</h3>
+      <p><%= I18n.t 'chakra.info_what' %></p>
         </div>
         
         <div class="span4">
-          <h3>Miksi?</h3>
-            <p>Koemme, että maailmassa on liikaa kilpailua ja materiaalisten palkintojen perässä juoksemista. Haluamme olla mukana rakentamassa vastavuoroisuuteen, välittämiseen ja henkiseen hyvinvointiin perustuvaa kulttuuria.
-</p>
+          <h3><%= I18n.t 'chakra.why' %>?</h3>
+            <p><%= I18n.t 'chakra.info_why' %></p>
         </div>
         
         <div class="span4">
-          <h3>Kuinka?</h3>
-<p>Alustallamme voit osallistua projekteihimme, tiedottaa tapahtumistasi sekä ehdottaa uusia ideoita. Osallistumisesta on yritetty tehdä mahdollisimman helppoa. Voit myös esitellä itsesi ja tutustua muihin käyttäjiin keskustelu-osiossa.</p>
+          <h3><%= I18n.t 'chakra.how' %>?</h3>
+<p><%= I18n.t 'chakra.info_how' %></p>
         </div>
         
     </div>
 
     <div class="row">
     <div class="span4 offset4">
-    <a href="<%= Discourse.base_url %>/faq"><h2><span class="font-icon-group"></span> Yhteisön säännöt</h2></a>
+    <a href="<%= Discourse.base_url %>/faq"><h2><span class="font-icon-group"></span> <%= I18n.t 'chakra.rules' %></h2></a>
     </div>
     </div>
 

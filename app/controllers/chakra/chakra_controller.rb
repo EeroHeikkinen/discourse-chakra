@@ -5,6 +5,13 @@ module Chakra
   class ChakraController < ActionController::Base
     include CurrentUser
     layout "chakra"
+
+    before_filter :set_locale
+
+    def set_locale
+        I18n.locale = params[:locale] || SiteSetting.default_locale
+    end
+
     def onepage
       if(current_user)
         @loggedIn = true
