@@ -9,7 +9,13 @@ module Chakra
     before_filter :set_locale
 
     def set_locale
-        I18n.locale = params[:locale] || SiteSetting.default_locale
+      if params[:locale]
+        I18n.locale = params[:locale] 
+        @locale_param = "?locale=" + params[:locale]
+      else 
+        I18n.locale = SiteSetting.default_locale
+        @locale_param = ""
+      end
     end
 
     def onepage

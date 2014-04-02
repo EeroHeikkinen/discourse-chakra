@@ -81,15 +81,15 @@ CHAKRA.I18n = {
       <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
         
         <div id="logo">
-          <a id="goUp" href="<%= Discourse.base_url %>" title="Chakra | Responsive One Page Template">Yhteinen</a>
+          <a id="goUp" href="<%= Discourse.base_url %><%= @locale_param %>" title="Chakra | Responsive One Page Template">Yhteinen</a>
         </div>
 
         <nav id="menu">
           <ul id="menu-nav">
-              <li><a href="<%= Discourse.base_url %>/projects" class="external"><%= I18n.t 'chakra.projects' %></a></li>
-                <li><a href="<%= Discourse.base_url %>/events" class="external"><%= I18n.t 'chakra.events' %></a></li>
-                <li><a href="<%= Discourse.base_url %>/about" class="external"><%= I18n.t 'chakra.info' %></a></li>
-                <li><a href="<%= Discourse.base_url %>/blog" class="external"><%= I18n.t 'chakra.blog' %></a></li>
+              <li><a href="<%= Discourse.base_url %>/projects<%= @locale_param %>" class="external"><%= I18n.t 'chakra.projects' %></a></li>
+                <li><a href="<%= Discourse.base_url %>/events<%= @locale_param %>" class="external"><%= I18n.t 'chakra.events' %></a></li>
+                <li><a href="<%= Discourse.base_url %>/about<%= @locale_param %>" class="external"><%= I18n.t 'chakra.info' %></a></li>
+                <li><a href="<%= Discourse.base_url %>/blog<%= @locale_param %>" class="external"><%= I18n.t 'chakra.blog' %></a></li>
                 <li><a href="<%= Discourse.base_url %>/categories" class="external"><%= I18n.t 'chakra.discussion' %></a></li>
             </ul> 
         </nav>
