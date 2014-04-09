@@ -17,7 +17,7 @@
                   <ul id="filters-city" class="option-set filters" data-option-key="city">
                       <li><a href="#filters-city=*" data-option-value=".future, .withinMonth, .withinYear" class="selected"><%= I18n.t 'chakra.all_cities' %></a></li>
                       <% @cities.each do |c| %>
-                      <li><a href="#filters-city=<%= c.downcase %>" data-option-value=".<%= c.downcase %>"><%= c %></a></li>
+                      <li><a href="#filters-city=<%= c.downcase %>" data-option-value=".<%= c.downcase %>:not(.past)"><%= c %></a></li>
                       <% end %>
                       <li class="filter-past"><a href="#filters-city" data-option-value=".past"><%= I18n.t 'chakra.show_past' %></a></li>
                   </ul>
