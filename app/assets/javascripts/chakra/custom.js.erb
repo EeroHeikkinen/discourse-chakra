@@ -65,35 +65,25 @@ customFilter = function (container, layoutMode){
 
   
   // filter items when filter link is clicked
-  var $optionSets = $('.' + container + '-options .option-set'),
+  var $optionSets = $('#' + container + '-options .option-set'),
     $optionLinks = $optionSets.find('a');
 
-  var less = ":nth-child(-n+5)";
-  var limiter = less;
-  var name = container;
-  var $toggle = $("#" + container + "-toggle");
-  
-  var selector = function() {
-    var isoFilters = [];
-    for ( var prop in filters ) {
-      isoFilters.push( filters[ prop ] )
-    }
-    return isoFilters.join('') || '*';
-  }
+/*
+  var filterFns = {
+    withinMonth: function() {
+      var date = $(this).attr('data-date');
+      if(!date) return false;
+      date = new Date(date);
 
-  $toggle.click(function() {
-    var $this = $(this);
-    if(!limiter) {
-      limiter = less;
-      $this.text("Lisää")
-    }
-    else {
-      limiter = "";
-      $this.text("Vähemmän")
-    }
+      var today = new Date();
+      var dayOffset = 30;
+      var millisecondOffset = dayOffset * 24 * 60 * 60 * 1000;
+      var endTime = today.getTime() + millisecondOffset; 
 
-    $container.isotope( { filter: selector() + limiter });
-  })
+      return date.getTime() < endTime;
+    }
+  };
+*/
 
   $optionLinks.click(function(){
     var $this = $(this);
@@ -103,6 +93,7 @@ customFilter = function (container, layoutMode){
     }
     var $optionSet = $this.parents('.option-set');
     $optionSet.find('.selected').removeClass('selected');
+    $this.addClass('selected');
   
     // make option object dynamically, i.e. { filter: '.my-filter-class' }
     var options = {},
@@ -110,18 +101,14 @@ customFilter = function (container, layoutMode){
       value = $this.attr('data-option-value');
 
     filters[ key ] = value;
-    $this.addClass('selected');
 
-    limiter = less;
+    var isoFilters = [];
+    for ( var prop in filters ) {
+      isoFilters.push( filters[ prop ] )
+    }
+    var selector = isoFilters.join('');
     
-    $container.isotope( { filter: selector() + limiter }, 
-      function($changedItems, instance) {
-          var all = instance.$allAtoms;
-          var cur = instance.$filteredAtoms.length;
-          var full = all.filter(selector).length;
-          if(cur < full || !limiter) $toggle.show();
-          else $toggle.hide();
-        } );
+    $container.isotope( { filter: selector } );
     
     return false;
   });
