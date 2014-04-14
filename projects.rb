@@ -5,8 +5,8 @@ module ::OnepagePlugin
 
     Topic.visible.listable_topics
       .joins(:category)
-      .where("(categories.parent_category_id = ? " +
-      " OR categories.id = ? " +
+      .where("((categories.parent_category_id = ? " +
+      " OR categories.id = ? )" +
       " AND topics.title not like 'About the%')" +
       " OR topics.title like '" + I18n.t('projects.prefix.topic') + "%'", 
       projects_category_id, projects_category_id)
