@@ -293,3 +293,7 @@ nav#menu #menu-nav li a {
 .fc-header-right {
 	padding-top: 15px !important;
 }
+
+#project p {
+	margin: 0 0 14px;
+}

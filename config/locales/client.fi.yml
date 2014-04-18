@@ -5,6 +5,9 @@ fi:
         categories:
           events: 'Tapahtumat'
   js:
+    join: 'Liity'
+    leave: 'Haluan pois'
+    participating: 'Mukana'
     event:
       title: 'Tapahtuma'
       date: 'Pvm'

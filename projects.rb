@@ -17,7 +17,7 @@ module ::OnepagePlugin
   end
 
   def self.find_project(id)
-  	t = Topic.secured.visible.listable_topics
+  	t = Topic.visible.listable_topics
       .where("topics.id = ?", id)
     return unless t and t[0]
     Project.new(t[0])
@@ -50,20 +50,46 @@ module ::OnepagePlugin
       ['trello']
     end
 
-    def post_counts_by_user
-      @post_counts_by_user ||= Post.where(topic_id: @topic.id).group(:user_id).order('count_all desc').limit(24).count
+    def participant_ids
+      p = eval(meta_data("project_participants")) rescue []
+      return [p] unless p.kind_of?(Array)
+      p
     end
 
     def participants
-      @participants ||= begin
-        participants = {}
-        User.where(id: post_counts_by_user.map {|k,v| k}).each {|u| participants[u.id] = u}
-        participants
+      User.where(id: participant_ids)
+    end
+
+    def participating(user) 
+      return false unless user
+      participant_ids.include? user.id
+    end
+
+    def add_participant(user)
+      return unless user
+      add_meta_data("project_participants", participant_ids << user.id)
+    end
+
+    def remove_participant(user)
+      return unless user
+      add_meta_data("project_participants", participant_ids - [user.id])
+    end
+
+    def body 
+      split = @post.cooked.gsub("<hr/>", "<hr>").split("<hr>")
+
+      if split.length > 1
+        return split[1]
       end
+      return @post.cooked
     end
 
     def post
       @post
+    end
+
+    def can_join(user)
+      return true unless participating(user)
     end
 
     def prefixes

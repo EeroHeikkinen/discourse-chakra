@@ -29,3 +29,6 @@ events:
   googlecalendar_end:
     default: 18
     client: true
+  trello_key:
+    default: ''
+    client: true

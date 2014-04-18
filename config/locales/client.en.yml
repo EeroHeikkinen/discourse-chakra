@@ -5,6 +5,9 @@ en:
         categories:
           events: 'Events'
   js:
+    join: 'Join'
+    leave: 'Leave'
+    participating: 'Participating'
     event:
       title: 'Event'
       date: 'Date'

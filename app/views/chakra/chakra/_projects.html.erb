@@ -7,7 +7,6 @@
                   <h2 class="title"><%= I18n.t 'chakra.projects' %></h2>   
               </div>    
           </div>
-
       </div>
 
  <!-- Portfolio Projects -->
@@ -32,13 +31,14 @@
                   <section id="projects">
                       <ul id="thumbs">
                         
-              <!-- Item Project and Filter Name -->
+                        <!-- Item Project and Filter Name -->
                         <% @projects.each do |p| %>
                           <li class="span3 item-thumbs <%= p.category %>">
                             <div class="row">
                               <div class="span3">
                                 <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<%= p.title %>" href="<%= p.url %>">
+                                <!-- <%= p.url %> -->
+                                <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<%= p.title %>" href="<%= Discourse.base_url%>/project/<%= p.id %>">
                                     <span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-search"></span>
                                 </a>

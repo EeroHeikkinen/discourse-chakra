@@ -16,11 +16,28 @@ module ::Chakra
 end
 
 register_asset 'javascripts/event_route.js'
+register_asset 'javascripts/project_participants.js'
+register_asset 'javascripts/discourse/templates/project_participants.js.handlebars'
+
+register_css <<CSS
+.project-participants-view {
+  margin-top: 5px;
+}
+.project-participants-view .btn {
+  background-color: #000;
+}
+.project-participants-view .label {
+  padding: 1px 7px;
+  font-size: 0.8em;
+}
+
+CSS
 
 Rails.configuration.assets.precompile += 
 ['chakra.js', 'chakra.css']
 
 after_initialize do
+  require_dependency File.expand_path('../integrate.rb', __FILE__)
   load File.expand_path("../metadata.rb", __FILE__)
   load File.expand_path("../events.rb", __FILE__)
   load File.expand_path("../projects.rb", __FILE__)

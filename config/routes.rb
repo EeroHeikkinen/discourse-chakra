@@ -6,6 +6,8 @@ Chakra::Engine.routes.draw do
   get "/events" => "chakra#events"
   get "/" => "chakra#onepage"
   get "/project/:project" => "chakra#project"
+  get "/join_project/:project" => "chakra#join_project"
+  get "/leave_project/:project" => "chakra#leave_project"
   get "/not/onepage" => "chakra#not_onepage"
   #get "posts" => "topics#index"
   #get "about" => "blog#about"

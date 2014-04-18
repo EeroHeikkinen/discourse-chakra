@@ -1,0 +1,20 @@
+
+    {{#if model.project}}
+    	<div class="project-participants-view">
+          {{#if model.project.participants}}
+            <span class="label">{{i18n participating}}:</span>
+        	  {{#each model.project.participants}}
+        		<a href='#' title="{{unbound username}}">
+                  {{avatar this imageSize="medium"}}
+                </a>
+        	  {{/each}}
+          {{/if}}
+          {{#if model.project.participating}}
+            <span class="btn standard" {{action leaveProject}}><a href="#" title=":(">{{i18n leave}}</a></span>
+          {{else}}
+            {{#if model.project.can_join}}
+            <span class="btn standard" {{action joinProject}}><a href="#" alt="">{{i18n join}}</a></span>
+            {{/if}}
+          {{/if}}
+    	</div>
+    {{/if}}

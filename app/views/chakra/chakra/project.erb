@@ -1,18 +1,46 @@
-
+    
 <!-- About Section -->
-<div id="work" class="page-alternate">
+<div id="project" class="page-alternate">
 <div class="container">
     <!-- Title Page -->
     <div class="row">
-        <div class="span12">
+        <div class="span10">
             <div class="title-page">
-                <h2 class="title"><%= @project.title %></h2>
+                <h3 class="spec">Projekti</h3>
+                <a href="<%= @project.url %>"><h2 class="title"><%= @project.title %></h2></a>
                 <h3 class="title-description"><%= @project.summary %></h3>
                 
                 <div class="page-description">
-                    <p><%= @project.post.cooked.html_safe %></p>
+                    <p><%= @project.body.html_safe %></p>
                 </div>
-                
+            </div>
+        </div>
+        <div class="span2">
+            <div class="row margin-40">
+              <!--<h4><a href="<%= @project.url %>"><span class="font-icon-comments"></span> Keskusteluun</a></h4>-->
+              <h3 class="spec">Mukana</h3> 
+                <p>
+                    <% @project.participants.each do |p| %>
+
+                            <a title="<%= p.username %>" href="<%= Discourse.base_url %>/users/<%= p.username %>">
+                                <img src="<%= p.avatar_template.gsub("{size}", "32") %>" alt="<%= p.name %>">
+                            </a>
+                            <!--<h4 class="profile-name"><%= p.name %></h4>-->
+                            <!--
+                            <div class="social">
+                              <ul class="social-icons">
+                                  <li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
+                                    <li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
+                                    <li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
+                                </ul>
+                            </div>-->
+                    <% end %>  
+                </p>
+                <p><% if @project.can_join(@current_user) %>
+                  <a href="<%= Discourse.base_url %>/join_project/<%= @project.id %>" class="button button-small">Liity</a>
+                <% elsif @project.participating(@current_user) %>
+                  <a href="<%= Discourse.base_url %>/leave_project/<%= @project.id %>" class="button button-small">Poistu</a>
+                <% end %></p>              
             </div>
         </div>
     </div>
@@ -46,32 +74,6 @@
     
     <!-- People -->
     <div class="row">
-
-    <% @project.participants.each do |id, p| %>
-      
-        <!-- Start Profile -->
-      <div class="span4 profile">
-          <div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">CTO/Founder</span>
-                </div>
-                <img src="<%= p.avatar_template.gsub("{size}", "120") %>" alt="<%= p.name %>">
-            </div>
-            <h3 class="profile-name"><%= p.name %></h3>
-            <p class="profile-description"><%= p.bio_cooked %></p>
-
-            <div class="social">
-              <ul class="social-icons">
-                  <li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Profile -->
-
-    <% end %>
         
     </div>
     <!-- End People -->

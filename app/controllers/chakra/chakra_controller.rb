@@ -7,6 +7,7 @@ module Chakra
     layout "chakra"
 
     before_filter :set_locale
+    before_filter :set_current_user
 
     def set_locale
       if params[:locale]
@@ -18,11 +19,14 @@ module Chakra
       end
     end
 
-    def onepage
+    def set_current_user
       if(current_user)
         @loggedIn = true
+        @current_user = current_user
       end
+    end
 
+    def onepage
       @projects = OnepagePlugin::projects
       @ideas = ideas
       @categories = []
@@ -57,6 +61,26 @@ module Chakra
       @ideas = ideas
       @categories = []
       render "projects"
+    end
+
+    def join_project
+      @project = OnepagePlugin::find_project(params[:project])
+      
+      if not @project.participating(current_user)
+        @project.add_participant(current_user)
+      end
+
+      redirect_to :action => 'project'
+    end
+
+    def leave_project
+      @project = OnepagePlugin::find_project(params[:project])
+
+      if @project.participating(current_user)
+        @project.remove_participant(current_user)
+      end
+
+      redirect_to :action => 'project'
     end
 
     def events
