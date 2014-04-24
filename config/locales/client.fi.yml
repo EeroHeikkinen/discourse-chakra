@@ -21,9 +21,9 @@ fi:
       
       --- 
       
-      - Date: {{date}}
-      - City: Kaupunki
-      - Place: Paikka
+      - Päivä: {{date}}
+      - Kaupunki: Kaupunki
+      - Paikka: Paikka
     idea_template: |
       Kirjoita kuvaus ideastasi. Mitä resursseja tarvitaan? 
     event_placeholder_title: 'Kirjoita tähän tapahtumasi otsikko'
