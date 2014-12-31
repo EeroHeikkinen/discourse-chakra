@@ -1,0 +1,390 @@
+/*
+Enter Here your Custom CSS Style!!
+*/
+
+div#work {
+	background: linear-gradient(rgb(226, 252, 216) 0%, #FECBAB);
+}
+
+div#events {
+	background: linear-gradient(#FCFECB 15%, #fbf5cf);
+}
+
+div#about {
+	background: linear-gradient(#FFFFFF, #F9F9F9);
+}
+
+body {
+	font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+
+#intro {
+	text-align: center;	
+	margin-top: -10px;
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	color: #FFF;
+	font-size: 25px;
+	letter-spacing: -1px;
+	font-weight: 100;
+}
+
+#intro .container {
+	height: 100%;
+}
+
+#intro .container .row {
+	margin-top: 140px;
+}
+
+#intro .overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #26292E;
+	opacity: 0.2;
+	filter: alpha(opacity=20);
+	z-index: 0;
+}
+
+#intro a {
+	margin-right: 10px;
+	font-size: 15px;
+	text-transform: none;
+	letter-spacing: 0px;
+	font-weight: 300;
+}
+
+#intro h1 {
+	font-size: 66px;
+	letter-spacing: 20px;
+	font-weight: 200;
+	float: none;
+	text-shadow: none;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 1em;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #000000;
+	font-weight: 600;
+}
+
+.title-description {
+	font-weight: 100;
+}
+
+.title-page .title {
+	font-size: 90px;
+	font-weight: 100;
+	letter-spacing: 6px;
+	color: rgba(0, 0, 0, 0.82);
+	margin: 0 0 5px 0;
+	font-family: "Source Sans Pro";
+}
+
+.title-page {
+	margin-top: 15px;
+	font-family: "Open Sans";
+}
+
+ul {
+	list-style: disc;
+}
+
+header #logo a {
+	background-size: 116px 30px;
+}
+
+header #logo a {
+	width: 116px;
+}
+
+header {
+	/*position: absolute;*/
+}
+
+nav#menu #menu-nav li a {
+	-webkit-transform: translate3d(0,0,0);
+}
+
+#home-slider {
+	margin-top: -60px;
+}
+
+#home-slider ul#slide-list {
+	bottom: 0;
+	padding: 0;
+	margin: -6px 0 15px 0;
+}
+
+#home-slider .control-nav {
+	display: none;
+	background: transparent;
+}
+
+.type-work {
+	background-image: none;
+}
+
+.spec-offset {
+	margin-top: 30px;
+}
+
+#projects .item-thumbs a + img {
+	max-width: 100%;
+}
+
+.item-thumbs a + img {
+	width: initial;
+}
+
+.item-thumbs {
+	font-size: 16px;
+	line-height: 25px;
+	background-color: rgba(255, 115, 115, 0.08);
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: 0px solid rgba(0, 0, 0, 0.27);
+	clear: both;
+	margin-bottom: 6px;
+}
+
+.button {
+	background-color: rgba(255, 115, 115, 0.08);
+}
+
+.page-alternate .item-thumbs {
+	background-color: #2F3238;
+}
+
+.item-thumbs h4 {
+	margin-bottom: 10px;
+}
+
+.item-thumbs p {
+	margin: 0;
+}
+
+.event-details {
+	margin-bottom: 5px;
+	margin-top: -15px;
+	color: #666666;
+}
+
+.event-date {
+	position: absolute;
+	text-shadow: 1px 1px 6px #000000;
+	left: 70px;
+	top: 49px;
+	font-size: 68px;
+	font-weight: 500;
+	color: #FFF;
+}
+
+.event-image {
+	background-size: cover;
+	height: 55px;
+}
+
+.event-image-large {
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.event-image-large {
+		display: block;
+	}
+	.event-image {
+		height: initial;
+		background-image: none !important;
+	}
+	#eventslist .item-thumbs {
+		height: initial !important;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.event-info {
+		padding: 10px;
+	}
+}
+
+#eventslist .item-thumbs {
+	padding: 0;
+	height: 55px;
+}
+
+#eventslist .item-thumbs a + img {
+	margin: 0;
+	max-width: 100%;
+	max-height: 270px;
+}
+
+#eventslist .item-thumbs h4 {
+	margin-top: 0px;
+	color: #EEE;
+}
+
+/* Filters */
+
+.work-nav .filters {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.work-nav .filters li {
+	display: inline-block;
+	padding: 0;
+	margin-right: 30px;
+}
+
+.work-nav .filters li a {
+	color: #7F8289;
+	font-size: 13px;
+	text-transform: uppercase;	
+	display: block;	
+}
+
+.work-nav .filters li a:hover {
+	color: #FFFFFF;
+}
+
+.work-nav .filters li a.selected {
+	color: #DE5E60;
+}
+
+/* End filters */
+
+.filter-past {
+	border-left: solid 1px #7C7C7C;
+	padding-left: 30px !important;
+}
+
+.slide-content p {
+	font-size: 18px;
+	letter-spacing: 0px;
+	text-transform: none;
+	line-height: 21px;
+	max-width: 360px;
+	margin: auto;
+}
+
+.transparent {
+	background-color: transparent;
+}
+
+.image-wrap {
+	width: 100%;
+	height: 240px;
+}
+
+.item-info {
+	padding: 10px;
+}
+
+/*
+@media (max-width: 768px) {
+	.item-info {
+		padding: 10px;
+	}
+}*/
+
+/* full-calendar */
+
+
+.full-calendar {
+	margin-top: 20px;
+}
+
+.page-alternate .fc-content {
+	/*background-color: #2F3238;*/
+	background-color: rgba(255, 214, 167, 0.4);
+}
+
+.fc-widget-header, .fc-widget-content {
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	/*border: 1px solid rgba(0, 0, 0, 0.05);*/
+}
+
+
+/*
+.fc-today {
+	position: relative;
+}*/
+
+.fc-event {
+	border: none;
+	background-color: #DE5E60;
+	color: #fff;
+	font-size: 12px;
+	line-height: 17px;
+	padding: 2px;
+}
+
+/*.fc-state-highlight:before {
+	position: absolute;
+	text-shadow: 1px 1px 6px #000000;
+	left: 11px;
+	top: 38px;
+	font-size: 28px;
+	font-weight: 500;
+	color: #FFF;
+	content: "TÄNÄÄN";
+}*/
+
+.fc-day:hover .fc-create-event {
+	display: block;
+}
+
+.fc-create-event {
+	float: left;
+	margin-left: 5px;
+	display: none;
+}
+
+
+.fc-state-highlight:before {
+	text-shadow: 1px 1px 6px #000000;
+	margin-right: 5px;
+	margin-left: 5px;
+	font-weight: 500;
+	color: #FFF;
+	content: "TÄNÄÄN";
+	float: right;
+}
+
+.fc-today .fc-day-number {
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.fc-today .fc-day-number {
+		text-shadow: 1px 1px 6px #000000;
+		margin-right: 5px;
+		margin-left: 5px;
+		font-weight: 500;
+		color: #FFF;
+		display: block;
+	}
+	.fc-state-highlight:before {
+		content: none;
+	}
+}
+
+
+.fc-state-highlight {
+	background: transparent;
+}
+
+.fc-header-right {
+	padding-top: 15px !important;
+}
+
+#project p {
+	margin: 0 0 14px;
+}

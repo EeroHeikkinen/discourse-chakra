@@ -7,7 +7,7 @@ module ::OnepagePlugin
       .where("(categories.slug = '" + SiteSetting.events_category + "'" +
       " AND topics.title not like 'About the%')" +
       " OR topics.title like '" + I18n.t('events.prefix.topic') + "%'")
-      .order("meta_data->'event_date' ASC")
+      #.order("custom_fields->'event_date' ASC")
   end
 
   def self.events
@@ -128,8 +128,8 @@ module ::OnepagePlugin
 
       return nil unless title and start_time and end_time
 
-      if @topic.meta_data && @topic.meta_data["calendar_event_id"]
-        calendar_event_id = @topic.meta_data["calendar_event_id"]
+      if @topic.custom_fields && @topic.custom_fields["calendar_event_id"]
+        calendar_event_id = @topic.custom_fields["calendar_event_id"]
       end
 
       event = cal.find_or_create_event_by_id(calendar_event_id) do |e|

@@ -2,6 +2,28 @@
 Enter Here your Custom CSS Style!!
 */
 
+div#work {
+	background: linear-gradient(rgb(198, 255, 198) 8%, rgb(255, 180, 158), rgb(255, 248, 115));
+}
+
+div#events {
+	background: linear-gradient(rgb(255, 248, 115) 35%, rgb(58, 255, 240) 90%, #fff);
+}
+
+div#about {
+	background: linear-gradient(#FFFFFF, #F9F9F9);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #000000;
+	font-weight: 600;
+}
+
+.title-page .title {
+	font-size: 48px;
+	margin: 0 0 5px 0;
+}
+
 ul {
 	list-style: disc;
 }

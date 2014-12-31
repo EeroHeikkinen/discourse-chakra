@@ -6,12 +6,12 @@ module ::OnepagePlugin
       end
 
       def meta_data(key)
-        return unless @topic.meta_data
-        @topic.meta_data[key]
+        return unless @topic.custom_fields
+        @topic.custom_fields[key]
       end
 
       def add_meta_data(key,value)
-        @topic.update_attribute('meta_data', (@topic.meta_data || {}).merge(key => value))
+        @topic.update_attribute('custom_fields', (@topic.custom_fields || {}).merge(key => value))
       end
 
       # Read event options from post

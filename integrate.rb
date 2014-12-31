@@ -14,7 +14,6 @@ module ProjectParticipantsTopicViewSerializer
       @project = OnepagePlugin::Project.new(object.topic)
 
       return unless object.topic.meta_data
-      debugger
       result = {}
       result[:participants] = @project.participants.map do |u| 
           BasicUserSerializer.new(u, scope: scope, root: false)

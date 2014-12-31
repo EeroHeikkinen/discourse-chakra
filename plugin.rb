@@ -6,6 +6,7 @@
 #::BLOG_HOST = Rails.env.development? ? "dev.samsaffron.com" : "samsaffron.com"
 #::BLOG_DISCOURSE = Rails.env.development? ? "l.discourse" : "discuss.samsaffron.com"
 
+#require 'byebug'
 gem "google_calendar", "0.3.1"
 
 module ::Chakra
@@ -63,7 +64,7 @@ after_initialize do
       if slug == SiteSetting.projects_category
         return "/projects"
       end
-      return super
+      #return super
     end
   end
 
@@ -98,7 +99,6 @@ after_initialize do
   end
 
   Plugin::Filter.register(:after_post_cook) do |post, cooked|
-    debugger
     handler = get_handler(post)
 
     if(handler) 
