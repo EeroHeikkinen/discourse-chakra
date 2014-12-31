@@ -15,7 +15,7 @@ div#about {
 }
 
 body {
-	font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+	font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif !important;
 }
 
 #intro {
@@ -62,7 +62,7 @@ body {
 	font-weight: 200;
 	float: none;
 	text-shadow: none;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Lato', sans-serif;
 	line-height: 1em;
 	text-transform: uppercase;
 	margin: 0;
@@ -74,6 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .title-description {
+	margin-top: 25px;
 	font-weight: 100;
 }
 
@@ -83,12 +84,12 @@ h1, h2, h3, h4, h5, h6 {
 	letter-spacing: 6px;
 	color: rgba(0, 0, 0, 0.82);
 	margin: 0 0 5px 0;
-	font-family: "Source Sans Pro";
+	font-family: "Lato";
+	line-height: normal;
 }
 
 .title-page {
-	margin-top: 15px;
-	font-family: "Open Sans";
+	font-family: "Lato";
 }
 
 ul {
